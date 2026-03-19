@@ -1,0 +1,1353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PreparedPro Membership – SurviveX</title>
+    <meta name="description" content="Join PreparedPro by SurviveX — the preparedness membership that keeps you equipped, trained, and ready. Monthly supply drops, training platform, member discounts, and community.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+
+    <style>
+        /* ── Tokens ─────────────────────────────────────── */
+        :root {
+            --red: #E50027;
+            --red-hover: #CC0022;
+            --red-soft: rgba(229,0,39,0.08);
+            --red-glow: rgba(229,0,39,0.22);
+            --black: #0A0A0A;
+            --dark: #131313;
+            --g900: #1C1C1C;
+            --g700: #3D3D3D;
+            --g500: #6B6B6B;
+            --g300: #ADADAD;
+            --g100: #F2F2F2;
+            --white: #FFFFFF;
+            --font: 'Plus Jakarta Sans', 'SuisseIntl', system-ui, -apple-system, sans-serif;
+            --ease: cubic-bezier(.4,0,.2,1);
+            --max: 1120px;
+        }
+
+        /* ── Reset ──────────────────────────────────────── */
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+        body { font-family: var(--font); color: var(--black); background: var(--white); line-height: 1.6; overflow-x: hidden; }
+        img { max-width: 100%; display: block; }
+        a { text-decoration: none; color: inherit; }
+        button { font-family: var(--font); cursor: pointer; border: none; background: none; }
+        ul { list-style: none; }
+
+        /* ── Utility ────────────────────────────────────── */
+        .container { max-width: var(--max); margin: 0 auto; padding: 0 24px; }
+        .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0,0,0,0); }
+        .fade-in { opacity: 0; transform: translateY(28px); transition: opacity .7s var(--ease), transform .7s var(--ease); }
+        .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+        /* ── Announcement ───────────────────────────────── */
+        .announce {
+            background: var(--black);
+            color: var(--white);
+            text-align: center;
+            padding: 10px 16px;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: .3px;
+        }
+        .announce a { color: var(--red); text-decoration: underline; text-underline-offset: 2px; }
+        .announce a:hover { color: #ff3355; }
+
+        /* ── Nav ─────────────────────────────────────────── */
+        .nav {
+            position: sticky; top: 0; z-index: 100;
+            background: rgba(255,255,255,.97);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(0,0,0,.06);
+            height: 64px;
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 0 24px;
+        }
+        .nav-logo { display: flex; align-items: center; }
+        .nav-logo img { height: 32px; width: auto; }
+        .nav-links { display: flex; gap: 28px; font-size: 13px; font-weight: 700; letter-spacing: .5px; text-transform: uppercase; }
+        .nav-links a:hover { color: var(--red); }
+        .nav-cta {
+            background: var(--red); color: var(--white);
+            padding: 10px 22px; font-weight: 700; font-size: 12px;
+            letter-spacing: .5px; text-transform: uppercase;
+            border-radius: 3px; transition: background .2s var(--ease);
+        }
+        .nav-cta:hover { background: var(--red-hover); }
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+        }
+
+        /* ── Hero ────────────────────────────────────────── */
+        .hero {
+            position: relative;
+            min-height: 92vh;
+            display: flex; align-items: center;
+            background: var(--black);
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute; inset: 0;
+            background:
+                radial-gradient(ellipse 80% 60% at 20% 50%, rgba(229,0,39,.18) 0%, transparent 70%),
+                radial-gradient(ellipse 60% 80% at 80% 30%, rgba(229,0,39,.08) 0%, transparent 60%);
+        }
+        .hero::after {
+            content: '';
+            position: absolute; inset: 0;
+            background-image:
+                linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px);
+            background-size: 64px 64px;
+            pointer-events: none;
+        }
+        .hero-inner {
+            position: relative; z-index: 2;
+            max-width: 780px; margin: 0 auto;
+            padding: 100px 24px 80px; text-align: center;
+        }
+        .hero-badge {
+            display: inline-block;
+            background: rgba(229,0,39,.12);
+            border: 1px solid rgba(229,0,39,.5);
+            color: var(--red);
+            font-size: 11px; font-weight: 700;
+            letter-spacing: 2.5px; text-transform: uppercase;
+            padding: 6px 18px; margin-bottom: 28px;
+        }
+        .hero h1 {
+            font-size: clamp(42px, 7vw, 78px);
+            font-weight: 800; color: var(--white);
+            line-height: 1.04; letter-spacing: -1px;
+            margin-bottom: 24px;
+        }
+        .hero h1 em { color: var(--red); font-style: normal; }
+        .hero-sub {
+            font-size: clamp(16px, 2.2vw, 19px);
+            color: rgba(255,255,255,.65);
+            max-width: 560px; margin: 0 auto 20px;
+            font-weight: 400; line-height: 1.6;
+        }
+        .hero-who {
+            font-size: 13px; font-weight: 600;
+            color: rgba(255,255,255,.4);
+            letter-spacing: .5px; text-transform: uppercase;
+            margin-bottom: 36px;
+        }
+        .hero-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+        .btn-red {
+            background: var(--red); color: var(--white);
+            padding: 16px 36px; font-weight: 700; font-size: 14px;
+            letter-spacing: .5px; text-transform: uppercase;
+            border-radius: 3px; transition: all .2s var(--ease);
+            display: inline-flex; align-items: center; gap: 8px;
+        }
+        .btn-red:hover { background: var(--red-hover); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(229,0,39,.3); }
+        .btn-ghost {
+            background: transparent; color: var(--white);
+            padding: 16px 36px; font-weight: 700; font-size: 14px;
+            letter-spacing: .5px; text-transform: uppercase;
+            border: 2px solid rgba(255,255,255,.25);
+            border-radius: 3px; transition: all .2s var(--ease);
+        }
+        .btn-ghost:hover { border-color: rgba(255,255,255,.6); transform: translateY(-2px); }
+
+        .hero-stats {
+            display: flex; gap: 40px; justify-content: center;
+            margin-top: 64px; flex-wrap: wrap;
+        }
+        .hero-stat { text-align: center; }
+        .hero-stat .num {
+            font-size: 36px; font-weight: 800; color: var(--white);
+            letter-spacing: -1px;
+        }
+        .hero-stat .num em { color: var(--red); font-style: normal; }
+        .hero-stat .lbl {
+            font-size: 11px; font-weight: 600;
+            letter-spacing: 1.5px; text-transform: uppercase;
+            color: rgba(255,255,255,.35); margin-top: 4px;
+        }
+
+        /* ── Trust Strip ─────────────────────────────────── */
+        .trust-strip {
+            background: var(--g100); border-top: 1px solid rgba(0,0,0,.04);
+            border-bottom: 1px solid rgba(0,0,0,.04);
+            padding: 18px 24px;
+        }
+        .trust-strip-inner {
+            max-width: var(--max); margin: 0 auto;
+            display: flex; flex-wrap: wrap; gap: 24px 36px;
+            justify-content: center; align-items: center;
+        }
+        .trust-strip-item {
+            display: flex; align-items: center; gap: 8px;
+            font-size: 12px; font-weight: 700; color: var(--g500);
+            letter-spacing: .5px; text-transform: uppercase;
+        }
+        .trust-strip-item svg { width: 18px; height: 18px; color: var(--red); flex-shrink: 0; }
+
+        /* ── Section Common ──────────────────────────────── */
+        .section { padding: 100px 24px; }
+        .section-dark { background: var(--dark); color: var(--white); }
+        .section-gray { background: var(--g100); }
+        .section-label {
+            font-size: 11px; font-weight: 700;
+            letter-spacing: 3px; text-transform: uppercase;
+            color: var(--red); margin-bottom: 14px;
+        }
+        .section-title {
+            font-size: clamp(30px, 5vw, 50px);
+            font-weight: 800; line-height: 1.08;
+            letter-spacing: -.5px; margin-bottom: 18px;
+        }
+        .section-sub {
+            font-size: 16px; color: var(--g500);
+            max-width: 560px; margin-bottom: 56px; line-height: 1.7;
+        }
+        .section-dark .section-sub { color: rgba(255,255,255,.55); }
+        .centered { text-align: center; }
+        .centered .section-sub { margin-left: auto; margin-right: auto; }
+
+        /* ── Problem Section ─────────────────────────────── */
+        .problem-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 24px;
+        }
+        .problem-card {
+            background: var(--white);
+            border: 1px solid rgba(0,0,0,.06);
+            padding: 32px 26px; border-radius: 4px;
+            transition: all .25s var(--ease);
+            position: relative; overflow: hidden;
+        }
+        .problem-card::before {
+            content: '';
+            position: absolute; top: 0; left: 0; right: 0;
+            height: 3px; background: var(--red);
+            transform: scaleX(0); transform-origin: left;
+            transition: transform .3s var(--ease);
+        }
+        .problem-card:hover::before { transform: scaleX(1); }
+        .problem-card:hover { box-shadow: 0 8px 32px rgba(0,0,0,.06); transform: translateY(-3px); }
+        .problem-icon {
+            width: 44px; height: 44px;
+            background: var(--red-soft);
+            border-radius: 4px;
+            display: flex; align-items: center; justify-content: center;
+            margin-bottom: 18px;
+        }
+        .problem-icon svg { width: 22px; height: 22px; color: var(--red); }
+        .problem-card h3 { font-size: 19px; font-weight: 700; margin-bottom: 8px; }
+        .problem-card p { font-size: 14px; color: var(--g500); line-height: 1.65; }
+
+        /* ── Pillars Section ─────────────────────────────── */
+        .pillars-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 28px;
+        }
+        .pillar {
+            background: var(--g900);
+            border: 1px solid rgba(255,255,255,.06);
+            padding: 36px 28px; border-radius: 4px;
+            transition: all .3s var(--ease);
+            position: relative;
+        }
+        .pillar:hover {
+            border-color: rgba(229,0,39,.3);
+            box-shadow: 0 0 40px rgba(229,0,39,.08);
+            transform: translateY(-4px);
+        }
+        .pillar-num {
+            font-size: 11px; font-weight: 800;
+            letter-spacing: 3px; text-transform: uppercase;
+            color: var(--red); margin-bottom: 16px;
+            display: flex; align-items: center; gap: 10px;
+        }
+        .pillar-num::after {
+            content: '';
+            flex: 1; height: 1px;
+            background: rgba(229,0,39,.25);
+        }
+        .pillar h3 {
+            font-size: 22px; font-weight: 700;
+            color: var(--white); margin-bottom: 10px;
+        }
+        .pillar p {
+            font-size: 14px; color: rgba(255,255,255,.5);
+            line-height: 1.7;
+        }
+
+        /* ── Plans Section ───────────────────────────────── */
+        .toggle-wrap {
+            display: flex; align-items: center;
+            justify-content: center; gap: 14px;
+            margin-bottom: 48px;
+        }
+        .toggle-label {
+            font-size: 14px; font-weight: 600; color: var(--g500);
+            cursor: pointer; transition: color .2s;
+        }
+        .toggle-label.active { color: var(--black); }
+        .toggle-track {
+            width: 52px; height: 28px;
+            background: var(--g300);
+            border-radius: 14px; cursor: pointer;
+            position: relative; transition: background .25s var(--ease);
+        }
+        .toggle-track.annual { background: var(--red); }
+        .toggle-knob {
+            position: absolute; top: 3px; left: 3px;
+            width: 22px; height: 22px;
+            background: var(--white);
+            border-radius: 50%;
+            transition: transform .25s var(--ease);
+            box-shadow: 0 1px 4px rgba(0,0,0,.15);
+        }
+        .toggle-track.annual .toggle-knob { transform: translateX(24px); }
+        .toggle-save {
+            background: rgba(229,0,39,.1);
+            color: var(--red); font-size: 11px;
+            font-weight: 700; letter-spacing: 1px;
+            padding: 4px 10px; border-radius: 20px;
+        }
+
+        .plans-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+            gap: 24px; align-items: start;
+        }
+        .plan {
+            border: 2px solid rgba(0,0,0,.07);
+            border-radius: 6px; overflow: hidden;
+            background: var(--white);
+            transition: all .3s var(--ease);
+        }
+        .plan:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 48px rgba(0,0,0,.08);
+        }
+        .plan.featured {
+            border-color: var(--red);
+            box-shadow: 0 8px 32px var(--red-glow);
+        }
+        .plan-head {
+            padding: 28px 28px 24px;
+            border-bottom: 1px solid rgba(0,0,0,.06);
+        }
+        .plan.featured .plan-head {
+            background: var(--red);
+            border-bottom-color: var(--red-hover);
+        }
+        .plan-tier {
+            display: inline-block;
+            background: var(--red); color: var(--white);
+            font-size: 10px; font-weight: 700;
+            letter-spacing: 2px; text-transform: uppercase;
+            padding: 4px 10px; border-radius: 2px;
+            margin-bottom: 14px;
+        }
+        .plan.featured .plan-tier { background: rgba(255,255,255,.2); }
+        .plan-name {
+            font-size: 26px; font-weight: 800;
+            margin-bottom: 4px;
+        }
+        .plan.featured .plan-name { color: var(--white); }
+        .plan-desc {
+            font-size: 13px; color: var(--g500);
+        }
+        .plan.featured .plan-desc { color: rgba(255,255,255,.7); }
+        .plan-price {
+            display: flex; align-items: baseline;
+            gap: 4px; margin-top: 16px;
+        }
+        .plan-amt {
+            font-size: 46px; font-weight: 800;
+            letter-spacing: -2px;
+        }
+        .plan.featured .plan-amt { color: var(--white); }
+        .plan-per { font-size: 14px; color: var(--g500); }
+        .plan.featured .plan-per { color: rgba(255,255,255,.6); }
+        .plan-was {
+            font-size: 13px; color: var(--g300);
+            text-decoration: line-through;
+            margin-top: 4px; display: none;
+        }
+        .plan.featured .plan-was { color: rgba(255,255,255,.4); }
+        .plans-annual .plan-was { display: block; }
+        .plan-body { padding: 28px; }
+        .plan-features {
+            display: flex; flex-direction: column;
+            gap: 13px; margin-bottom: 28px;
+        }
+        .plan-features li {
+            display: flex; align-items: flex-start;
+            gap: 10px; font-size: 14px; color: var(--g700);
+        }
+        .plan-features li::before {
+            content: '';
+            width: 18px; height: 18px; flex-shrink: 0;
+            background: var(--red-soft);
+            border-radius: 50%;
+            margin-top: 2px;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23E50027'%3E%3Cpath d='M12.207 4.793a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-2.5-2.5a1 1 0 011.414-1.414L6.5 9.086l4.293-4.293a1 1 0 011.414 0z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: 12px;
+        }
+        .plan-cta-btn {
+            display: block; width: 100%;
+            padding: 15px; text-align: center;
+            background: var(--black); color: var(--white);
+            font-weight: 700; font-size: 13px;
+            letter-spacing: .5px; text-transform: uppercase;
+            border-radius: 3px; transition: all .2s var(--ease);
+        }
+        .plan-cta-btn:hover { background: var(--g700); }
+        .plan.featured .plan-cta-btn {
+            background: var(--white); color: var(--red);
+        }
+        .plan.featured .plan-cta-btn:hover { background: var(--g100); }
+        .plan-guarantee {
+            text-align: center; font-size: 12px;
+            color: var(--g500); margin-top: 14px;
+        }
+        .plans-footer {
+            text-align: center; margin-top: 32px;
+            font-size: 14px; color: var(--g500);
+        }
+        .plans-footer strong { color: var(--black); }
+
+        /* ── Value Comparison ─────────────────────────────── */
+        .value-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 32px; align-items: start;
+            max-width: 900px; margin: 0 auto;
+        }
+        @media (max-width: 768px) { .value-grid { grid-template-columns: 1fr; } }
+        .value-col {
+            padding: 36px 32px; border-radius: 6px;
+        }
+        .value-col.without {
+            background: var(--g100);
+            border: 1px solid rgba(0,0,0,.06);
+        }
+        .value-col.with {
+            background: var(--dark);
+            border: 2px solid var(--red);
+            color: var(--white);
+            position: relative;
+        }
+        .value-col.with::before {
+            content: 'BETTER VALUE';
+            position: absolute; top: -12px; left: 50%;
+            transform: translateX(-50%);
+            background: var(--red); color: var(--white);
+            font-size: 10px; font-weight: 700;
+            letter-spacing: 2px; padding: 4px 14px;
+            border-radius: 2px;
+        }
+        .value-col h3 {
+            font-size: 18px; font-weight: 700;
+            margin-bottom: 24px; padding-bottom: 16px;
+            border-bottom: 1px solid rgba(0,0,0,.08);
+        }
+        .value-col.with h3 { border-bottom-color: rgba(255,255,255,.1); color: var(--white); }
+        .value-line {
+            display: flex; justify-content: space-between;
+            align-items: center; padding: 10px 0;
+            font-size: 14px; color: var(--g700);
+        }
+        .value-col.with .value-line { color: rgba(255,255,255,.7); }
+        .value-line .price { font-weight: 700; }
+        .value-line.included .price { color: var(--red); font-weight: 800; }
+        .value-total {
+            margin-top: 20px; padding-top: 16px;
+            border-top: 2px solid var(--black);
+            display: flex; justify-content: space-between;
+            align-items: baseline;
+        }
+        .value-col.with .value-total { border-top-color: var(--red); }
+        .value-total .total-label { font-size: 14px; font-weight: 600; }
+        .value-total .total-num { font-size: 32px; font-weight: 800; }
+        .value-col.with .value-total .total-num { color: var(--white); }
+        .value-savings {
+            text-align: center; margin-top: 36px;
+            font-size: 18px; font-weight: 700; color: var(--red);
+        }
+        .value-savings span {
+            font-size: 32px; font-weight: 800;
+            display: block; margin-top: 4px;
+        }
+
+        /* ── Box / Supply Drop ───────────────────────────── */
+        .box-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px; align-items: center;
+        }
+        @media (max-width: 768px) { .box-grid { grid-template-columns: 1fr; } }
+        .box-img {
+            border-radius: 6px; overflow: hidden;
+            aspect-ratio: 4/3; background: var(--g100);
+        }
+        .box-img img { width: 100%; height: 100%; object-fit: cover; }
+        .box-list { display: flex; flex-direction: column; gap: 20px; }
+        .box-list li { display: flex; gap: 16px; align-items: flex-start; }
+        .box-num {
+            width: 32px; height: 32px; flex-shrink: 0;
+            background: var(--red); color: var(--white);
+            font-size: 15px; font-weight: 700;
+            border-radius: 50%; display: flex;
+            align-items: center; justify-content: center;
+            margin-top: 2px;
+        }
+        .box-list h4 { font-size: 17px; font-weight: 700; margin-bottom: 3px; }
+        .box-list p { font-size: 14px; color: var(--g500); line-height: 1.6; }
+
+        /* ── Testimonials ────────────────────────────────── */
+        .testi-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+        }
+        .testi {
+            background: var(--white);
+            border: 1px solid rgba(0,0,0,.06);
+            border-radius: 4px; padding: 30px 26px;
+            transition: all .25s var(--ease);
+        }
+        .testi:hover { box-shadow: 0 8px 28px rgba(0,0,0,.06); transform: translateY(-3px); }
+        .testi-stars { color: var(--red); font-size: 16px; letter-spacing: 2px; margin-bottom: 16px; }
+        .testi blockquote {
+            font-size: 15px; line-height: 1.7;
+            color: var(--g700); margin-bottom: 20px;
+            font-style: italic;
+        }
+        .testi cite {
+            font-size: 13px; font-weight: 700;
+            color: var(--black); letter-spacing: .3px;
+            font-style: normal; display: block;
+        }
+        .testi .role { font-size: 12px; color: var(--g500); margin-top: 2px; }
+
+        /* ── Trust Bar ───────────────────────────────────── */
+        .trust-bar {
+            background: var(--black); padding: 32px 24px;
+        }
+        .trust-bar-inner {
+            max-width: var(--max); margin: 0 auto;
+            display: flex; flex-wrap: wrap;
+            gap: 28px; justify-content: center;
+        }
+        .trust-item {
+            display: flex; align-items: center; gap: 8px;
+            color: rgba(255,255,255,.7); font-size: 12px;
+            font-weight: 600; letter-spacing: .5px;
+            text-transform: uppercase;
+        }
+        .trust-icon { font-size: 18px; }
+
+        /* ── FAQ ──────────────────────────────────────────── */
+        .faq-list {
+            max-width: 740px; margin: 0 auto;
+        }
+        .faq-item { border-bottom: 1px solid rgba(0,0,0,.08); }
+        .faq-item:first-child { border-top: 1px solid rgba(0,0,0,.08); }
+        .faq-q {
+            width: 100%; padding: 22px 0;
+            display: flex; justify-content: space-between;
+            align-items: center; gap: 16px;
+            font-size: 17px; font-weight: 600;
+            color: var(--black); text-align: left;
+        }
+        .faq-q:hover { color: var(--red); }
+        .faq-chevron {
+            width: 20px; height: 20px; flex-shrink: 0;
+            color: var(--red);
+            transition: transform .25s var(--ease);
+        }
+        .faq-item.open .faq-chevron { transform: rotate(180deg); }
+        .faq-a {
+            max-height: 0; overflow: hidden;
+            transition: max-height .35s ease;
+        }
+        .faq-a-inner {
+            padding: 0 0 22px;
+            font-size: 15px; color: var(--g500);
+            line-height: 1.75;
+        }
+        .faq-a-inner a { color: var(--red); font-weight: 600; }
+
+        /* ── Final CTA ───────────────────────────────────── */
+        .final-cta {
+            background: var(--red);
+            padding: 100px 24px; text-align: center;
+            position: relative; overflow: hidden;
+        }
+        .final-cta::before {
+            content: '';
+            position: absolute; inset: 0;
+            background-image:
+                linear-gradient(rgba(255,255,255,.04) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px);
+            background-size: 64px 64px;
+        }
+        .final-cta > * { position: relative; z-index: 1; }
+        .final-cta h2 {
+            font-size: clamp(34px, 5vw, 56px);
+            font-weight: 800; color: var(--white);
+            margin-bottom: 18px; letter-spacing: -.5px;
+        }
+        .final-cta p {
+            font-size: 17px; color: rgba(255,255,255,.75);
+            max-width: 480px; margin: 0 auto 36px;
+        }
+        .final-btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+        .btn-white {
+            background: var(--white); color: var(--red);
+            padding: 16px 36px; font-weight: 700; font-size: 14px;
+            letter-spacing: .5px; text-transform: uppercase;
+            border-radius: 3px; transition: all .2s var(--ease);
+        }
+        .btn-white:hover { background: var(--g100); transform: translateY(-2px); }
+        .btn-ghost-white {
+            background: transparent; color: var(--white);
+            padding: 16px 36px; font-weight: 700; font-size: 14px;
+            letter-spacing: .5px; text-transform: uppercase;
+            border: 2px solid rgba(255,255,255,.35);
+            border-radius: 3px; transition: all .2s var(--ease);
+        }
+        .btn-ghost-white:hover { border-color: rgba(255,255,255,.7); transform: translateY(-2px); }
+        .final-guarantee {
+            margin-top: 24px; font-size: 13px;
+            color: rgba(255,255,255,.55); font-weight: 600;
+            letter-spacing: .3px;
+        }
+
+        /* ── Footer ──────────────────────────────────────── */
+        .footer {
+            background: var(--black); color: rgba(255,255,255,.5);
+            padding: 64px 24px 32px;
+        }
+        .footer-inner {
+            max-width: var(--max); margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 40px;
+        }
+        @media (max-width: 768px) {
+            .footer-inner { grid-template-columns: 1fr 1fr; }
+        }
+        .footer-brand p { font-size: 13px; line-height: 1.7; margin-top: 12px; }
+        .footer-brand .logo { margin-bottom: 4px; }
+        .footer-brand .logo img { height: 28px; width: auto; }
+        .footer-links h4 {
+            font-size: 12px; font-weight: 700;
+            letter-spacing: 1px; text-transform: uppercase;
+            color: var(--white); margin-bottom: 16px;
+        }
+        .footer-links li { margin-bottom: 10px; }
+        .footer-links a { font-size: 13px; transition: color .15s; }
+        .footer-links a:hover { color: var(--white); }
+        .footer-bottom {
+            max-width: var(--max); margin: 40px auto 0;
+            padding-top: 24px;
+            border-top: 1px solid rgba(255,255,255,.08);
+            display: flex; justify-content: space-between;
+            flex-wrap: wrap; gap: 12px;
+            font-size: 12px; letter-spacing: .3px;
+        }
+
+        /* ── Sticky Mobile CTA ───────────────────────────── */
+        .sticky-cta {
+            position: fixed; bottom: 0; left: 0; right: 0;
+            z-index: 90;
+            background: var(--white);
+            border-top: 1px solid rgba(0,0,0,.08);
+            padding: 12px 16px;
+            display: none;
+            align-items: center; justify-content: space-between;
+            gap: 12px;
+            box-shadow: 0 -4px 20px rgba(0,0,0,.08);
+        }
+        .sticky-cta-text {
+            font-size: 13px; font-weight: 600; color: var(--black);
+        }
+        .sticky-cta-text span { display: block; font-size: 11px; color: var(--g500); font-weight: 400; }
+        .sticky-cta-btn {
+            background: var(--red); color: var(--white);
+            padding: 12px 24px; font-weight: 700; font-size: 12px;
+            letter-spacing: .5px; text-transform: uppercase;
+            border-radius: 3px; white-space: nowrap;
+            transition: background .2s;
+        }
+        .sticky-cta-btn:hover { background: var(--red-hover); }
+        @media (max-width: 768px) {
+            .sticky-cta { display: flex; }
+            body { padding-bottom: 72px; }
+        }
+
+        /* ── Responsive ──────────────────────────────────── */
+        @media (max-width: 640px) {
+            .section { padding: 72px 20px; }
+            .hero-stats { gap: 24px; }
+            .hero-stat .num { font-size: 28px; }
+            .hero-btns { flex-direction: column; align-items: center; }
+            .btn-red, .btn-ghost { width: 100%; text-align: center; justify-content: center; }
+            .value-col { padding: 28px 24px; }
+        }
+
+        /* ── FAQ Schema (hidden) ─────────────────────────── */
+        .schema-faq { display: none; }
+    </style>
+</head>
+
+<body>
+
+    <!-- Announcement Bar -->
+    <div class="announce">
+        Limited time: Get your first supply drop FREE when you join annually
+        <a href="#plans">See Plans</a>
+    </div>
+
+    <!-- Nav -->
+    <nav class="nav">
+        <a href="https://survive-x.com" class="nav-logo"><img src="../context/survivex-branding/SurviveX Branding/Logos/logo-red-optimized.png" alt="SurviveX"></a>
+        <ul class="nav-links">
+            <li><a href="https://survive-x.com/collections/first-aid-kits">Shop</a></li>
+            <li><a href="https://survive-x.com/pages/training-page">Training</a></li>
+            <li><a href="/membership" style="color:var(--red)">Membership</a></li>
+        </ul>
+        <a href="#plans" class="nav-cta">Join Now</a>
+    </nav>
+
+    <!-- ═══════ HERO ═══════ -->
+    <section class="hero">
+        <div class="hero-inner">
+            <div class="hero-badge">PreparedPro Membership</div>
+            <h1>Your Kit Gets Used.<br>Your Skills Fade.<br>Stay <em>Ready.</em></h1>
+            <p class="hero-sub">Every bandage you use, every glove you grab, every Zip Stitch you apply &mdash; it doesn't replace itself. PreparedPro keeps you stocked, trained, and confident.</p>
+            <p class="hero-who">For families, outdoor enthusiasts &amp; anyone serious about preparedness</p>
+            <div class="hero-btns">
+                <a href="#plans" class="btn-red">Choose Your Plan <span aria-hidden="true">&rarr;</span></a>
+                <a href="#how-it-works" class="btn-ghost">See How It Works</a>
+            </div>
+            <div class="hero-stats">
+                <div class="hero-stat">
+                    <div class="num" data-count="200000">200<em>K+</em></div>
+                    <div class="lbl">Kits Sold</div>
+                </div>
+                <div class="hero-stat">
+                    <div class="num">Up to <em>30%</em></div>
+                    <div class="lbl">Member Savings</div>
+                </div>
+                <div class="hero-stat">
+                    <div class="num"><em>Free</em></div>
+                    <div class="lbl">Shipping Always</div>
+                </div>
+                <div class="hero-stat">
+                    <div class="num">HSA/<em>FSA</em></div>
+                    <div class="lbl">Eligible</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust Strip -->
+    <div class="trust-strip">
+        <div class="trust-strip-inner">
+            <div class="trust-strip-item">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.403 12.652a3 3 0 000-5.304 3 3 0 00-3.75-3.751 3 3 0 00-5.305 0 3 3 0 00-3.751 3.75 3 3 0 000 5.305 3 3 0 003.75 3.751 3 3 0 005.305 0 3 3 0 003.751-3.75zm-2.546-4.46a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clip-rule="evenodd"/></svg>
+                200,000+ Customers
+            </div>
+            <div class="trust-strip-item">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 1a4.5 4.5 0 00-4.5 4.5V9H5a2 2 0 00-2 2v6a2 2 0 002 2h10a2 2 0 002-2v-6a2 2 0 00-2-2h-.5V5.5A4.5 4.5 0 0010 1zm3 8V5.5a3 3 0 10-6 0V9h6z" clip-rule="evenodd"/></svg>
+                30-Day Guarantee
+            </div>
+            <div class="trust-strip-item">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path d="M1 4.75C1 3.784 1.784 3 2.75 3h14.5c.966 0 1.75.784 1.75 1.75v10.515a1.75 1.75 0 01-1.75 1.75h-1.5c-.078 0-.155-.005-.23-.015H4.48c-.075.01-.152.015-.23.015h-1.5A1.75 1.75 0 011 15.265V4.75z"/></svg>
+                HSA / FSA Eligible
+            </div>
+            <div class="trust-strip-item">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path d="M8 16.25a.75.75 0 01.75-.75h2.5a.75.75 0 010 1.5h-2.5a.75.75 0 01-.75-.75z"/><path fill-rule="evenodd" d="M4 4a3 3 0 013-3h6a3 3 0 013 3v12a3 3 0 01-3 3H7a3 3 0 01-3-3V4zm4-1.5v.75c0 .414.336.75.75.75h2.5a.75.75 0 00.75-.75V2.5H7z" clip-rule="evenodd"/></svg>
+                Cancel Anytime
+            </div>
+            <div class="trust-strip-item">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.05 3.636a1 1 0 010 1.414 7 7 0 000 9.9 1 1 0 11-1.414 1.414 9 9 0 010-12.728 1 1 0 011.414 0zm9.9 0a9 9 0 010 12.728 1 1 0 11-1.414-1.414 7 7 0 000-9.9 1 1 0 011.414-1.414zM7.879 6.464a1 1 0 010 1.414 3 3 0 000 4.243 1 1 0 01-1.414 1.414 5 5 0 010-7.07 1 1 0 011.414 0zm4.242 0a5 5 0 010 7.072 1 1 0 01-1.414-1.414 3 3 0 000-4.243 1 1 0 011.414-1.414z" clip-rule="evenodd"/></svg>
+                Designed in Virginia
+            </div>
+        </div>
+    </div>
+
+    <!-- ═══════ PROBLEM ═══════ -->
+    <section class="section section-gray" id="how-it-works">
+        <div class="container">
+            <p class="section-label">The Reality</p>
+            <h2 class="section-title" style="max-width:600px">Your kit gets lighter every time you use it</h2>
+            <p class="section-sub">You bought a great kit. That was step one. But every scraped knee, every kitchen burn, every pair of gloves you grab &mdash; your kit gets thinner. Most people never restock until the next real emergency.</p>
+            <div class="problem-grid">
+                <div class="problem-card fade-in">
+                    <div class="problem-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path d="M5.127 3.502L5.25 3.5h9.5c.041 0 .082 0 .123.002A2.251 2.251 0 0012.75 2h-5.5a2.25 2.25 0 00-2.123 1.502zM1 10.25A2.25 2.25 0 013.25 8h13.5A2.25 2.25 0 0119 10.25v5.5A2.25 2.25 0 0116.75 18H3.25A2.25 2.25 0 011 15.75v-5.5z"/><path d="M3.25 6.5c-.04 0-.082 0-.123.002A2.25 2.25 0 015.25 5h9.5c.98 0 1.814.627 2.123 1.502a3.819 3.819 0 00-.123-.002H3.25z"/></svg>
+                    </div>
+                    <h3>Supplies Get Used Up</h3>
+                    <p>Band-aids for the kids. Gloves for the dog's wound. Burn gel for the stove splash. Gauze for the garage cut. Every use makes your kit less ready for the next one &mdash; and nobody restocks until it's too late.</p>
+                </div>
+                <div class="problem-card fade-in">
+                    <div class="problem-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm.75-13a.75.75 0 00-1.5 0v5c0 .414.336.75.75.75h4a.75.75 0 000-1.5h-3.25V5z" clip-rule="evenodd"/></svg>
+                    </div>
+                    <h3>What's Left Expires Quietly</h3>
+                    <p>The supplies you haven't used are degrading too. Adhesive weakens. Antiseptic loses potency. That Zip Stitch from 3 years ago? It may not hold when you need it most.</p>
+                </div>
+                <div class="problem-card fade-in">
+                    <div class="problem-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-5a.75.75 0 01.75.75v4.5a.75.75 0 01-1.5 0v-4.5A.75.75 0 0110 5zm0 10a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd"/></svg>
+                    </div>
+                    <h3>Skills Fade Fast</h3>
+                    <p>Could you apply a Zip Stitch right now? Control severe bleeding with a pressure bandage? Knowing how matters as much as having the supplies.</p>
+                </div>
+                <div class="problem-card fade-in">
+                    <div class="problem-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M4.5 2A1.5 1.5 0 003 3.5v13A1.5 1.5 0 004.5 18h11a1.5 1.5 0 001.5-1.5V7.621a1.5 1.5 0 00-.44-1.06l-4.12-4.122A1.5 1.5 0 0011.378 2H4.5zm2.25 8.5a.75.75 0 000 1.5h6.5a.75.75 0 000-1.5h-6.5zm0 3a.75.75 0 000 1.5h6.5a.75.75 0 000-1.5h-6.5z" clip-rule="evenodd"/></svg>
+                    </div>
+                    <h3>No Family Emergency Plan</h3>
+                    <p>Does your family know where the kit is? What to do in a house fire? Who to call after an earthquake? An emergency plan saves lives.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════ FOUR PILLARS ═══════ -->
+    <section class="section section-dark">
+        <div class="container">
+            <p class="section-label">The PreparedPro System</p>
+            <h2 class="section-title" style="color:var(--white)">Four pillars of true readiness</h2>
+            <p class="section-sub">PreparedPro isn't a subscription box. It's a complete system built on the same framework that trains first responders &mdash; adapted for everyday people.</p>
+            <div class="pillars-grid">
+                <div class="pillar fade-in">
+                    <div class="pillar-num">01 &middot; Equip</div>
+                    <h3>Stay Stocked</h3>
+                    <p>Every glove, bandage, and Zip Stitch you use gets replaced automatically. Curated monthly supply drops keep your kit full with professional-grade components &mdash; not filler.</p>
+                </div>
+                <div class="pillar fade-in">
+                    <div class="pillar-num">02 &middot; Train</div>
+                    <h3>Build Real Skills</h3>
+                    <p>Full access to our video training platform. Learn wound closure, bleeding control, CPR, and burn treatment from Chase Carter, EMT-P.</p>
+                </div>
+                <div class="pillar fade-in">
+                    <div class="pillar-num">03 &middot; Unite</div>
+                    <h3>Join the Community</h3>
+                    <p>Connect with 200,000+ people who take preparedness seriously. Share stories, stay accountable, and learn from real emergency experiences.</p>
+                </div>
+                <div class="pillar fade-in">
+                    <div class="pillar-num">04 &middot; Act</div>
+                    <h3>Be Ready to Act</h3>
+                    <p>When the moment comes &mdash; the car accident, the kitchen burn, the trail injury &mdash; you don't freeze. You don't fumble. You act.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════ PLANS ═══════ -->
+    <section class="section" id="plans">
+        <div class="container">
+            <div class="centered">
+                <p class="section-label">Choose Your Plan</p>
+                <h2 class="section-title">Three levels of readiness</h2>
+                <p class="section-sub">All plans include free shipping, HSA/FSA eligibility, and a 30-day money-back guarantee. Cancel anytime &mdash; no contracts.</p>
+            </div>
+
+            <!-- Toggle -->
+            <div class="toggle-wrap">
+                <span class="toggle-label active" data-period="monthly">Monthly</span>
+                <div class="toggle-track" id="billingToggle" role="switch" aria-checked="false" tabindex="0">
+                    <div class="toggle-knob"></div>
+                </div>
+                <span class="toggle-label" data-period="annual">Annual</span>
+                <span class="toggle-save">Save 20%</span>
+            </div>
+
+            <div class="plans-grid" id="plansGrid">
+
+                <!-- Essentials -->
+                <div class="plan fade-in">
+                    <div class="plan-head">
+                        <div class="plan-tier">Starter</div>
+                        <div class="plan-name">Essentials</div>
+                        <div class="plan-desc">For individuals who want to stay stocked.</div>
+                        <div class="plan-price">
+                            <span class="plan-amt" data-monthly="$14" data-annual="$11">$14</span>
+                            <span class="plan-per" data-monthly=".99 / month" data-annual=".99 / month">.99 / month</span>
+                        </div>
+                        <div class="plan-was" data-annual="$14.99/mo">Billed $143.88/year</div>
+                    </div>
+                    <div class="plan-body">
+                        <ul class="plan-features">
+                            <li>Quarterly supply refill box (bandages, gloves, antiseptic, essentials)</li>
+                            <li>10% discount on all SurviveX store purchases</li>
+                            <li>Access to First Aid Quick-Reference Guide (PDF)</li>
+                            <li>Monthly preparedness newsletter with seasonal tips</li>
+                            <li>Free standard shipping on every order</li>
+                            <li>HSA / FSA eligible purchases</li>
+                        </ul>
+                        <a href="#" class="plan-cta-btn">Get Started &mdash; $14.99/mo</a>
+                        <div class="plan-guarantee">30-day money-back guarantee</div>
+                    </div>
+                </div>
+
+                <!-- PreparedPro (Featured) -->
+                <div class="plan featured fade-in">
+                    <div class="plan-head">
+                        <div class="plan-tier">Most Popular</div>
+                        <div class="plan-name">PreparedPro</div>
+                        <div class="plan-desc">For prepared families who want real skills.</div>
+                        <div class="plan-price">
+                            <span class="plan-amt" data-monthly="$29" data-annual="$23">$29</span>
+                            <span class="plan-per" data-monthly=".99 / month" data-annual=".99 / month">.99 / month</span>
+                        </div>
+                        <div class="plan-was">Billed $287.88/year</div>
+                    </div>
+                    <div class="plan-body">
+                        <ul class="plan-features">
+                            <li>Monthly curated supply drop (advanced components included)</li>
+                            <li>20% discount on all SurviveX store purchases</li>
+                            <li>Full Training Platform access &mdash; all video courses with Chase Carter</li>
+                            <li>Scenario-based emergency drill guides (quarterly)</li>
+                            <li>Downloadable Family Emergency Plan templates</li>
+                            <li>Free expedited shipping on every order</li>
+                            <li>HSA / FSA eligible purchases</li>
+                            <li>Lifetime warranty on all member kit purchases</li>
+                            <li>Priority customer support</li>
+                        </ul>
+                        <a href="#" class="plan-cta-btn">Join PreparedPro &mdash; $29.99/mo</a>
+                        <div class="plan-guarantee">30-day money-back guarantee</div>
+                    </div>
+                </div>
+
+                <!-- Family Guardian -->
+                <div class="plan fade-in">
+                    <div class="plan-head">
+                        <div class="plan-tier">Family</div>
+                        <div class="plan-name">Family Guardian</div>
+                        <div class="plan-desc">For households serious about full readiness.</div>
+                        <div class="plan-price">
+                            <span class="plan-amt" data-monthly="$49" data-annual="$39">$49</span>
+                            <span class="plan-per" data-monthly=".99 / month" data-annual=".99 / month">.99 / month</span>
+                        </div>
+                        <div class="plan-was">Billed $479.88/year</div>
+                    </div>
+                    <div class="plan-body">
+                        <ul class="plan-features">
+                            <li>Everything in PreparedPro, plus:</li>
+                            <li>Covers 2 household kits (rotation &amp; restocking for both)</li>
+                            <li>30% discount on all SurviveX store purchases</li>
+                            <li>Custom printed Family Emergency Binder (shipped to you)</li>
+                            <li>Kids' First Aid Introduction module on Training Platform</li>
+                            <li>Dedicated account manager for custom kit builds</li>
+                            <li>Early access to new products before public launch</li>
+                            <li>Free overnight shipping on urgent restock orders</li>
+                        </ul>
+                        <a href="#" class="plan-cta-btn">Get Family Guardian &mdash; $49.99/mo</a>
+                        <div class="plan-guarantee">30-day money-back guarantee</div>
+                    </div>
+                </div>
+
+            </div>
+            <p class="plans-footer">
+                <strong>All plans are FSA/HSA eligible.</strong> Need kits for your team?
+                <a href="/business" style="color:var(--red);font-weight:600">Explore corporate plans &rarr;</a>
+            </p>
+        </div>
+    </section>
+
+    <!-- ═══════ VALUE COMPARISON ═══════ -->
+    <section class="section section-gray">
+        <div class="container">
+            <div class="centered">
+                <p class="section-label">The Math</p>
+                <h2 class="section-title">PreparedPro pays for itself</h2>
+                <p class="section-sub">Every time you use supplies, you pay to replace them &mdash; or you don't, and your kit gets weaker. Here's how the numbers stack up.</p>
+            </div>
+            <div class="value-grid fade-in">
+                <div class="value-col without">
+                    <h3>Without Membership</h3>
+                    <div class="value-line"><span>Replacing used supplies quarterly</span> <span class="price">$180/yr</span></div>
+                    <div class="value-line"><span>Online first aid course</span> <span class="price">$149/yr</span></div>
+                    <div class="value-line"><span>Standard shipping (4 orders)</span> <span class="price">$36/yr</span></div>
+                    <div class="value-line"><span>Large First Aid Kit (full price)</span> <span class="price">$120.99</span></div>
+                    <div class="value-line"><span>Emergency plan templates</span> <span class="price">DIY</span></div>
+                    <div class="value-total">
+                        <span class="total-label">Annual cost</span>
+                        <span class="total-num">$485<span style="font-size:18px;font-weight:400">+</span></span>
+                    </div>
+                </div>
+                <div class="value-col with">
+                    <h3>With PreparedPro (Annual)</h3>
+                    <div class="value-line included"><span>Monthly supply replenishment</span> <span class="price">Included</span></div>
+                    <div class="value-line included"><span>Full training platform</span> <span class="price">Included</span></div>
+                    <div class="value-line included"><span>Free expedited shipping</span> <span class="price">Included</span></div>
+                    <div class="value-line included"><span>20% off everything (save $24+ per kit)</span> <span class="price">Included</span></div>
+                    <div class="value-line included"><span>Emergency plans &amp; guides</span> <span class="price">Included</span></div>
+                    <div class="value-total">
+                        <span class="total-label">Annual cost</span>
+                        <span class="total-num">$287<span style="font-size:18px;font-weight:400;color:rgba(255,255,255,.5)">.88</span></span>
+                    </div>
+                </div>
+            </div>
+            <div class="value-savings fade-in">
+                You save over <span>$200/year</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════ WHAT'S IN THE BOX ═══════ -->
+    <section class="section">
+        <div class="container">
+            <div class="box-grid">
+                <div class="box-img fade-in">
+                    <img src="https://survive-x.com/cdn/shop/files/large-first-aid-kit-survive-x.jpg"
+                        alt="SurviveX first aid supplies arranged from a PreparedPro membership supply drop"
+                        onerror="this.parentElement.style.background='#e8e8e8'" loading="lazy">
+                </div>
+                <div class="fade-in">
+                    <p class="section-label">Every Supply Drop</p>
+                    <h2 class="section-title">Curated by first aid professionals</h2>
+                    <p class="section-sub" style="margin-bottom:32px">Every box is assembled by our Virginia-based team. No filler items. No plastic tweezers. Only high-utility, professional-grade components selected by EMTs.</p>
+                    <ul class="box-list">
+                        <li>
+                            <div class="box-num">1</div>
+                            <div>
+                                <h4>Professional-Grade Supplies</h4>
+                                <p>Zip Stitches, nitrile gloves, hydrogel burn gel, antiseptic wipes, adhesive dressings &mdash; components trusted by first responders.</p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="box-num">2</div>
+                            <div>
+                                <h4>Scenario Training Card</h4>
+                                <p>Each box includes a printed emergency scenario drill &mdash; "What would you do if&hellip;" &mdash; to practice with your family.</p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="box-num">3</div>
+                            <div>
+                                <h4>Seasonal Readiness Checklist</h4>
+                                <p>Context-aware prep for the current season: wildfire, winter storm, hurricane, road trips, or everyday household emergencies.</p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="box-num">4</div>
+                            <div>
+                                <h4>Member-Only Discount Code</h4>
+                                <p>A new store discount arrives with every box. Stackable on sale items. Use it on kits, Zip Stitches, burn dressings, and more.</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════ TRUST BAR ═══════ -->
+    <div class="trust-bar">
+        <div class="trust-bar-inner">
+            <div class="trust-item"><span class="trust-icon">&#x1F3E5;</span> FDA-Cleared Devices</div>
+            <div class="trust-item"><span class="trust-icon">&#x1F4B3;</span> HSA / FSA Eligible</div>
+            <div class="trust-item"><span class="trust-icon">&#x1F504;</span> Cancel Anytime</div>
+            <div class="trust-item"><span class="trust-icon">&#x1F69A;</span> Free Shipping</div>
+            <div class="trust-item"><span class="trust-icon">&#x1F6E1;</span> 30-Day Guarantee</div>
+            <div class="trust-item"><span class="trust-icon">&#x1F1FA;&#x1F1F8;</span> Designed in Virginia</div>
+        </div>
+    </div>
+
+    <!-- ═══════ TESTIMONIALS ═══════ -->
+    <section class="section section-gray">
+        <div class="container">
+            <div class="centered">
+                <p class="section-label">Member Stories</p>
+                <h2 class="section-title">Real members. Real emergencies.</h2>
+                <p class="section-sub" style="margin-bottom:48px">Our members have used their SurviveX kits and training in real situations. Here's what they say.</p>
+            </div>
+            <div class="testi-grid">
+                <div class="testi fade-in">
+                    <div class="testi-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <blockquote>"My husband is an EMT and he loved the PreparedPro box. The Zip Stitches alone are worth the entire subscription. We've restocked our home kit three times through the membership &mdash; never had to think about it."</blockquote>
+                    <cite>Sarah M.</cite>
+                    <div class="role">PreparedPro Member &middot; Denver, CO</div>
+                </div>
+                <div class="testi fade-in">
+                    <div class="testi-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <blockquote>"I got the Family Guardian plan after our area had back-to-back wildfires. The printed emergency binder they sent was exactly what we needed &mdash; where to go, what to grab, who to call. Every family in a fire zone should have this."</blockquote>
+                    <cite>Jason T.</cite>
+                    <div class="role">Family Guardian Member &middot; Phoenix, AZ</div>
+                </div>
+                <div class="testi fade-in">
+                    <div class="testi-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <blockquote>"The training platform sealed the deal. I've watched the wound closure module three times now. Knowing I can actually use what's in the kit &mdash; that confidence is worth more than the supplies themselves."</blockquote>
+                    <cite>Rebecca L.</cite>
+                    <div class="role">PreparedPro Member &middot; Austin, TX</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════ FAQ ═══════ -->
+    <section class="section" id="faq">
+        <div class="container">
+            <div class="centered" style="margin-bottom:48px">
+                <p class="section-label">Questions &amp; Answers</p>
+                <h2 class="section-title">Frequently Asked</h2>
+            </div>
+            <div class="faq-list">
+
+                <div class="faq-item">
+                    <button class="faq-q" aria-expanded="false">
+                        Can I use my HSA or FSA to pay for the membership?
+                        <svg class="faq-chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd"/></svg>
+                    </button>
+                    <div class="faq-a"><div class="faq-a-inner">Yes. All SurviveX products are HSA/FSA eligible. You can use your health savings or flexible spending account to cover membership fees and any additional store purchases. We provide an itemized receipt for reimbursement. It's a smart way to use pre-tax health dollars &mdash; especially before funds expire at year-end.</div></div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-q" aria-expanded="false">
+                        Can I cancel my membership at any time?
+                        <svg class="faq-chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd"/></svg>
+                    </button>
+                    <div class="faq-a"><div class="faq-a-inner">Absolutely. No contracts, no commitments. Cancel, pause, or change your plan anytime from your account dashboard. No cancellation fees, ever. If you cancel within 30 days, we'll refund your first payment in full &mdash; no questions asked.</div></div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-q" aria-expanded="false">
+                        What if I already have a SurviveX first aid kit?
+                        <svg class="faq-chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd"/></svg>
+                    </button>
+                    <div class="faq-a"><div class="faq-a-inner">Even better. Your supply drops will restock and upgrade what's already in your kit. The training platform teaches you to use every component with confidence. And your member discount (10&ndash;30% off) applies to every future purchase &mdash; replacement Zip Stitches, burn dressings, a second kit for the car.</div></div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-q" aria-expanded="false">
+                        When do my supply drops ship?
+                        <svg class="faq-chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd"/></svg>
+                    </button>
+                    <div class="faq-a"><div class="faq-a-inner">Essentials members receive a quarterly box on the 1st of January, April, July, and October. PreparedPro and Family Guardian members receive a monthly box on the 1st. You'll get a tracking notification as soon as it ships. First box ships within 3 business days of signing up.</div></div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-q" aria-expanded="false">
+                        What's in a typical monthly supply drop?
+                        <svg class="faq-chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd"/></svg>
+                    </button>
+                    <div class="faq-a"><div class="faq-a-inner">Every box is curated by our Virginia-based team and varies by season and member feedback. A typical PreparedPro box includes: replacement nitrile gloves, adhesive dressings, antiseptic wipes, a Zip Stitch wound closure or burn gel packet, a scenario training card, a seasonal readiness checklist, and your member discount code. Retail value of each box: $40&ndash;60+.</div></div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-q" aria-expanded="false">
+                        Does my member discount stack on sale items?
+                        <svg class="faq-chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd"/></svg>
+                    </button>
+                    <div class="faq-a"><div class="faq-a-inner">Yes. Your member discount applies on top of existing sale prices. Family Guardian members also receive a monthly promo code in their supply box for additional savings on specific products.</div></div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-q" aria-expanded="false">
+                        What's the 30-day money-back guarantee?
+                        <svg class="faq-chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd"/></svg>
+                    </button>
+                    <div class="faq-a"><div class="faq-a-inner">Try any PreparedPro plan risk-free. If you're not satisfied within the first 30 days, we'll refund your payment in full &mdash; no questions asked, no hoops to jump through. Keep whatever supplies you've already received. We're that confident you'll see the value.</div></div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-q" aria-expanded="false">
+                        Is there a corporate or team membership?
+                        <svg class="faq-chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd"/></svg>
+                    </button>
+                    <div class="faq-a"><div class="faq-a-inner">Yes. For businesses, schools, churches, and organizations needing 5+ kits and group training access, we offer custom corporate packages with dedicated support and volume pricing. <a href="/business">Visit our business page</a> to request a quote.</div></div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════ FINAL CTA ═══════ -->
+    <section class="final-cta">
+        <h2>A deep cut doesn't wait<br>for you to get ready.</h2>
+        <p>Join thousands of prepared Americans who never have to scramble when something goes wrong.</p>
+        <div class="final-btns">
+            <a href="#plans" class="btn-white">Choose Your Plan</a>
+            <a href="https://survive-x.com/collections/first-aid-kits" class="btn-ghost-white">Browse the Store</a>
+        </div>
+        <div class="final-guarantee">30-Day Money-Back Guarantee &middot; Cancel Anytime &middot; Free Shipping &middot; FSA/HSA Eligible</div>
+    </section>
+
+    <!-- ═══════ FOOTER ═══════ -->
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="footer-brand">
+                <div class="logo"><img src="../context/survivex-branding/SurviveX Branding/Logos/logo-white-optimized.png" alt="SurviveX"></div>
+                <p>Prepared. Organized. Life-saving.<br>The confidence to act when it matters most.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Shop</h4>
+                <ul>
+                    <li><a href="https://survive-x.com/collections/first-aid-kits">First Aid Kits</a></li>
+                    <li><a href="https://survive-x.com/collections/wounds">Wound Care</a></li>
+                    <li><a href="https://survive-x.com/collections/burns">Burn Care</a></li>
+                    <li><a href="https://survive-x.com/collections/supplies">Supplies</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Membership</h4>
+                <ul>
+                    <li><a href="#plans">All Plans</a></li>
+                    <li><a href="#plans">Essentials</a></li>
+                    <li><a href="#plans">PreparedPro</a></li>
+                    <li><a href="#plans">Family Guardian</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="https://survive-x.com/pages/first-aid-guide">First Aid Guide</a></li>
+                    <li><a href="https://survive-x.com/pages/training-page">Training</a></li>
+                    <li><a href="https://survive-x.com/policies/shipping-policy">Shipping</a></li>
+                    <li><a href="https://survive-x.com/policies/refund-policy">Returns</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <span>&copy; 2026 SurviveX. All rights reserved.</span>
+            <span>FREE SHIPPING &middot; FREE RETURNS &middot; 30-DAY GUARANTEE</span>
+        </div>
+    </footer>
+
+    <!-- Sticky Mobile CTA -->
+    <div class="sticky-cta">
+        <div class="sticky-cta-text">
+            PreparedPro
+            <span>From $14.99/mo &middot; Cancel anytime</span>
+        </div>
+        <a href="#plans" class="sticky-cta-btn">Join Now</a>
+    </div>
+
+    <!-- ═══════ FAQ Schema ═══════ -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            { "@type": "Question", "name": "Can I use my HSA or FSA to pay for the membership?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. All SurviveX products are HSA/FSA eligible. You can use your health savings or flexible spending account to cover membership fees and any additional store purchases." }},
+            { "@type": "Question", "name": "Can I cancel my membership at any time?", "acceptedAnswer": { "@type": "Answer", "text": "Absolutely. No contracts, no commitments. Cancel, pause, or change your plan anytime from your account dashboard. No cancellation fees, ever." }},
+            { "@type": "Question", "name": "What's in a typical monthly supply drop?", "acceptedAnswer": { "@type": "Answer", "text": "Every box includes replacement nitrile gloves, adhesive dressings, antiseptic wipes, a Zip Stitch or burn gel packet, a scenario training card, a seasonal readiness checklist, and a member discount code. Retail value: $40-60+." }},
+            { "@type": "Question", "name": "What's the 30-day money-back guarantee?", "acceptedAnswer": { "@type": "Answer", "text": "Try any PreparedPro plan risk-free. If you're not satisfied within the first 30 days, we'll refund your payment in full. Keep whatever supplies you've already received." }}
+        ]
+    }
+    </script>
+
+    <script>
+        /* ── Pricing Toggle ──────────────────────────────── */
+        const toggle = document.getElementById('billingToggle');
+        const grid = document.getElementById('plansGrid');
+        const labels = document.querySelectorAll('.toggle-label');
+        let isAnnual = false;
+
+        function updatePricing() {
+            const period = isAnnual ? 'annual' : 'monthly';
+            toggle.classList.toggle('annual', isAnnual);
+            toggle.setAttribute('aria-checked', isAnnual);
+            grid.classList.toggle('plans-annual', isAnnual);
+
+            labels.forEach(l => {
+                l.classList.toggle('active', l.dataset.period === period);
+            });
+
+            document.querySelectorAll('.plan-amt').forEach(el => {
+                el.textContent = el.dataset[period];
+            });
+            document.querySelectorAll('.plan-per').forEach(el => {
+                el.textContent = el.dataset[period];
+            });
+
+            // Update CTA button text
+            const ctaTexts = isAnnual
+                ? ['Get Started — $11.99/mo', 'Join PreparedPro — $23.99/mo', 'Get Family Guardian — $39.99/mo']
+                : ['Get Started — $14.99/mo', 'Join PreparedPro — $29.99/mo', 'Get Family Guardian — $49.99/mo'];
+            document.querySelectorAll('.plan-cta-btn').forEach((btn, i) => {
+                btn.textContent = ctaTexts[i];
+            });
+        }
+
+        toggle.addEventListener('click', () => { isAnnual = !isAnnual; updatePricing(); });
+        toggle.addEventListener('keydown', e => {
+            if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); isAnnual = !isAnnual; updatePricing(); }
+        });
+        labels.forEach(l => {
+            l.addEventListener('click', () => {
+                isAnnual = l.dataset.period === 'annual';
+                updatePricing();
+            });
+        });
+
+        /* ── FAQ Accordion ───────────────────────────────── */
+        document.querySelectorAll('.faq-q').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const item = btn.closest('.faq-item');
+                const answer = item.querySelector('.faq-a');
+                const wasOpen = item.classList.contains('open');
+
+                document.querySelectorAll('.faq-item').forEach(i => {
+                    i.classList.remove('open');
+                    i.querySelector('.faq-a').style.maxHeight = '0';
+                    i.querySelector('.faq-q').setAttribute('aria-expanded', 'false');
+                });
+
+                if (!wasOpen) {
+                    item.classList.add('open');
+                    answer.style.maxHeight = answer.scrollHeight + 'px';
+                    btn.setAttribute('aria-expanded', 'true');
+                }
+            });
+        });
+
+        /* ── Scroll Fade-In ──────────────────────────────── */
+        const fadeEls = document.querySelectorAll('.fade-in');
+        const obs = new IntersectionObserver((entries) => {
+            entries.forEach((e, i) => {
+                if (e.isIntersecting) {
+                    // Stagger siblings
+                    const siblings = Array.from(e.target.parentElement.querySelectorAll('.fade-in'));
+                    const idx = siblings.indexOf(e.target);
+                    setTimeout(() => {
+                        e.target.classList.add('visible');
+                    }, idx * 100);
+                    obs.unobserve(e.target);
+                }
+            });
+        }, { threshold: 0.1 });
+        fadeEls.forEach(el => obs.observe(el));
+
+        /* ── Sticky CTA visibility ───────────────────────── */
+        const stickyCta = document.querySelector('.sticky-cta');
+        const heroSection = document.querySelector('.hero');
+        const stickyObs = new IntersectionObserver(entries => {
+            entries.forEach(e => {
+                if (stickyCta) {
+                    stickyCta.style.transform = e.isIntersecting ? 'translateY(100%)' : 'translateY(0)';
+                    stickyCta.style.transition = 'transform .3s ease';
+                }
+            });
+        });
+        stickyObs.observe(heroSection);
+    </script>
+
+</body>
+</html>
