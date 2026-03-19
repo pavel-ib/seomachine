@@ -56,7 +56,7 @@ add_action('init', function() {
             'type' => 'string',
             'description' => $args['description'],
             'auth_callback' => function() {
-                return current_user_can('edit_posts');
+                return (bool) current_user_can('edit_posts');
             },
         ]);
     }

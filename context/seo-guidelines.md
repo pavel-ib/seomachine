@@ -1,18 +1,19 @@
-# SEO Guidelines for Castos Content
+# SEO Guidelines for SurviveX Content
 
-This document outlines SEO best practices and requirements for all Castos blog content to maximize organic search visibility and rankings.
+This document outlines SEO best practices and requirements for all SurviveX blog content (written by or attributed to Chase Carter, EMT-P) to maximize organic search visibility and rankings across first aid, trauma, wound care, and preparedness keywords.
 
 ## Content Length Requirements
 
 ### Target Word Counts
-- **Standard Blog Post**: 1,500-3,000 words (target: 2,000-2,500)
-- **Pillar Content / Comprehensive Guides**: 3,000-5,000 words maximum
-- **How-To Guides**: 1,500-2,500 words
-- **News / Updates**: 800-1,200 words (exception to standard)
+- **Standard Blog Post**: 1,000-2,000 words (target: 1,200-1,800)
+- **Pillar Content / Comprehensive Guides**: 2,000-3,000 words maximum
+- **How-To Guides**: 1,000-2,000 words
+- **Product Education / Buyer's Guides**: 1,000-1,500 words
+- **Quick Tips / Checklists**: 500-800 words (exception to standard)
 
 ### Important Length Guidelines
-- **Maximum for most articles**: 3,000 words
-- **Maximum for pillar content**: 5,000 words
+- **Maximum for most articles**: 2,000 words
+- **Maximum for pillar content**: 3,000 words
 - If a topic requires more than the maximum, break it into a series of related articles
 - Aim for the lower end of ranges when possible—concise, focused content often performs better
 
@@ -40,7 +41,7 @@ Before writing any article:
 
 ### Keyword Density Guidelines
 - **Primary Keyword**: 1-2% density
-  - Example: In a 2,000-word article, use keyword 20-40 times
+  - Example: In a 1,500-word article, use keyword 15-30 times
   - Natural integration is critical—never force keywords
 - **Secondary Keywords**: 0.5-1% density each
 - **LSI Keywords**: Sprinkle throughout naturally
@@ -58,16 +59,17 @@ Primary keyword MUST appear in:
 ### Keyword Integration Best Practices
 - **Natural language first**: Write for humans, optimize for search engines
 - **Use variations**: Don't repeat exact phrase robotically
-  - Example: "podcast hosting" → "hosting your podcast" → "podcast host"
+  - Example: "first aid kit" → "first aid supplies" → "emergency kit"
 - **Question formats**: Include conversational variations
-  - "How to start a podcast" vs "starting a podcast"
+  - "How to close a wound without stitches" vs "wound closure at home"
 - **Semantic keywords**: Use related terms to support topical authority
-  - For "podcast editing": include "audio editing", "post-production", "editing workflow"
+  - For "first aid kit for car": include "vehicle emergency kit", "car safety supplies", "roadside first aid"
+  - For "zip stitch wound closure": include "wound closure strips", "butterfly bandage alternative", "steri strip substitute"
 
 ### Keyword Stuffing (Avoid)
-❌ "Podcast hosting is important. Podcast hosting helps podcasters. Our podcast hosting platform offers podcast hosting services for podcast hosting needs."
+❌ "First aid kits are important. First aid kits help families. Our first aid kit company offers first aid kit products for first aid kit needs."
 
-✅ "Podcast hosting is important for creators who want to distribute their show to major platforms. A reliable host ensures your episodes are accessible wherever listeners discover new content."
+✅ "A well-organized first aid kit can mean the difference between panic and action in an emergency. When your kit is color-coded and labeled, you reach for the right thing — even when your hands are shaking."
 
 ## Content Structure Requirements
 
@@ -136,23 +138,24 @@ Primary keyword MUST appear in:
 
 ### Meta Title
 **Requirements**:
-- **Length**: 50-60 characters (including "| Castos" if used)
+- **Length**: 50-60 characters (including "| SurviveX" if used)
 - **Primary keyword**: Must be included
 - **Compelling**: Should encourage clicks from SERP
-- **Unique**: Different from all other Castos page titles
+- **Unique**: Different from all other SurviveX page titles
 - **Accurate**: Must match page content
 
 **Format Options**:
 - `[Primary Keyword]: [Benefit/Promise]`
 - `How to [Goal] | [Qualifier]`
-- `[Number] Ways to [Achieve Benefit]`
-- `[Topic] Guide for [Audience] | Castos`
+- `[Number] [Topic Points] for [Audience]`
+- `[Topic] Guide | SurviveX`
 
 **Examples**:
-- ✅ "How to Start a Podcast in 2025: Complete Guide"
-- ✅ "12 Proven Podcast Growth Strategies | Castos"
-- ❌ "Podcast Tips and Tricks" (too vague, no keyword)
-- ❌ "The Ultimate Comprehensive Guide to Everything About Starting Your First Podcast Successfully" (too long)
+- ✅ "How to Close a Wound Without Stitches: Complete Guide"
+- ✅ "Best First Aid Kit for Hiking & Camping | SurviveX"
+- ✅ "5 Reasons Your Tourniquet Might Fail (And How to Fix It)"
+- ❌ "First Aid Tips" (too vague, no keyword)
+- ❌ "The Ultimate Comprehensive Guide to Everything About Building Your First Aid Kit for Any Emergency" (too long)
 
 ### Meta Description
 **Requirements**:
@@ -169,9 +172,9 @@ Primary keyword MUST appear in:
 ```
 
 **Examples**:
-- ✅ "Learn how to start a podcast with our step-by-step guide. Everything from equipment to launch strategy. Perfect for beginners. Start your show today." (159 chars)
-- ✅ "Discover 12 proven podcast growth strategies that top creators use. Increase downloads, engagement, and audience loyalty. Actionable tips inside." (155 chars)
-- ❌ "This is a blog post about podcasting where we discuss many podcast-related topics." (vague, no value prop, no CTA)
+- ✅ "Close deep cuts without stitches or ER visits. Learn how zip stitch wound closures work — step-by-step, from an EMT. Shop SurviveX kits." (148 chars)
+- ✅ "What should be in a first aid kit? Not 100 band-aids. Here's what EMTs actually recommend and why organization matters. See the SurviveX system." (155 chars)
+- ❌ "This is a blog post about first aid where we discuss many first aid-related topics." (vague, no value prop, no CTA)
 
 ### URL Slug
 **Requirements**:
@@ -181,14 +184,14 @@ Primary keyword MUST appear in:
 - Short and descriptive (3-5 words ideal)
 - No stop words unless necessary (a, the, and, of, etc.)
 
-**Format**: `/blog/[primary-keyword-phrase]`
+**Format**: `/blogs/first-aid/[primary-keyword-phrase]`
 
 **Examples**:
-- ✅ `/blog/start-podcast-guide`
-- ✅ `/blog/podcast-growth-strategies`
-- ✅ `/blog/podcast-editing-software`
-- ❌ `/blog/how-to-start-a-podcast-in-2025-the-complete-guide` (too long)
-- ❌ `/blog/post-12345` (no keywords)
+- ✅ `/blogs/first-aid/zip-stitch-wound-closure-guide`
+- ✅ `/blogs/first-aid/best-first-aid-kit-for-camping`
+- ✅ `/blogs/first-aid/how-to-stop-severe-bleeding`
+- ❌ `/blogs/first-aid/how-to-build-a-complete-first-aid-kit-for-your-car-and-family-in-2026` (too long)
+- ❌ `/blogs/first-aid/post-12345` (no keywords)
 
 ## Internal Linking Strategy
 
@@ -211,7 +214,7 @@ Primary keyword MUST appear in:
 
 #### 3. Product/Feature Pages (0-1 link)
 - Only when contextually relevant
-- Natural mention of how Castos solves problem
+- Natural mention of how SurviveX products solve the problem
 - Never forced or overly promotional
 
 #### 4. Resource Pages (0-1 link)
@@ -222,8 +225,8 @@ Primary keyword MUST appear in:
 ### Internal Linking Best Practices
 
 **Anchor Text**:
-- ✅ Descriptive and keyword-rich: "our complete guide to podcast analytics"
-- ✅ Natural in sentence flow: "Learn more about podcast SEO strategies"
+- ✅ Descriptive and keyword-rich: "our complete guide to zip stitch wound closures"
+- ✅ Natural in sentence flow: "Learn how to choose the right first aid kit for your needs"
 - ❌ Generic: "click here" or "read more"
 - ❌ Exact match repeatedly: Always using same anchor text for same page
 
@@ -253,10 +256,11 @@ Primary keyword MUST appear in:
 
 ### External Link Quality Standards
 - **Authority**: Link to credible, well-known sources
-  - ✅ Industry publications (Podcast Host, Podnews, etc.)
-  - ✅ Research institutions and studies
-  - ✅ Established media outlets
-  - ❌ Random blogs with no authority
+  - ✅ Medical references (NIH, Mayo Clinic, Red Cross, NAEMT)
+  - ✅ Research institutions and published studies
+  - ✅ Established media outlets (People Inc. properties, outdoor publications)
+  - ✅ Government safety sources (OSHA, NPS, CDC)
+  - ❌ Random blogs with no medical authority
   - ❌ Spammy or low-quality sites
 
 - **Relevance**: Links must directly support content claims
@@ -307,16 +311,17 @@ Use transition words to improve flow (target: one per paragraph):
 ### Expertise, Authoritativeness, Trustworthiness (E-A-T)
 
 #### Expertise
-- Provide accurate, detailed information on podcasting topics
-- Back claims with data and examples
-- Demonstrate deep understanding of podcast creator needs
-- Include actionable, practical advice
+- Provide accurate, detailed information on first aid, trauma, wound care, and preparedness
+- Back claims with data, medical sources, and real-world examples
+- Demonstrate deep understanding through Chase Carter, EMT-P's authority
+- Include actionable, practical advice — every article should leave the reader knowing what to do
 
 #### Authoritativeness
-- Cite credible sources
-- Reference industry data and trends
-- Include expert quotes when relevant
-- Leverage Castos's position as hosting platform
+- Cite credible medical sources (NIH, medical journals, Red Cross)
+- Reference industry data, safety statistics, and published research
+- Include Chase Carter, EMT-P insights and field experience
+- Leverage SurviveX's position as an expert-curated, premium first aid brand
+- Align with EQUIP→TRAIN→UNITE→ACT framework
 
 #### Trustworthiness
 - Be transparent and honest
@@ -334,9 +339,10 @@ Use transition words to improve flow (target: one per paragraph):
 
 ### Factual Accuracy
 - **Verify statistics**: Check all numbers and data points
-- **Current information**: Ensure practices/processes are up-to-date
-- **Technical accuracy**: Podcasting terminology and processes must be correct
-- **Castos features**: Ensure product references are accurate
+- **Current information**: Ensure medical practices and protocols are up-to-date
+- **Technical accuracy**: First aid, trauma, and preparedness terminology must be correct
+- **SurviveX products**: Ensure product references, prices, and features are accurate
+- **Medical safety**: Never provide medical advice that could be dangerous if followed incorrectly — always recommend professional help for serious injuries
 
 ## Image Optimization
 
@@ -349,14 +355,16 @@ Use transition words to improve flow (target: one per paragraph):
 ### Image SEO
 **File Names**:
 - Descriptive and keyword-rich
-- ✅ `podcast-editing-software-interface.jpg`
+- ✅ `survivex-large-first-aid-kit-open-labeled-compartments.jpg`
+- ✅ `zip-stitch-wound-closure-application-steps.jpg`
 - ❌ `IMG_12345.jpg`
 
 **Alt Text**:
 - Describe what image shows (accessibility + SEO)
 - Include keywords naturally where relevant
 - 125 characters or less
-- ✅ "Podcast editing software interface showing waveform and timeline"
+- ✅ "SurviveX Large First Aid Kit open showing color-coded labeled compartments"
+- ✅ "Zip stitch wound closure applied to forearm laceration"
 - ❌ "Image"
 
 **Placement**:
@@ -375,9 +383,9 @@ Featured snippets appear at position 0 in Google search results. Optimize for th
 
 **Example**:
 ```markdown
-## What is Podcast Hosting?
+## What Is a Zip Stitch Wound Closure?
 
-Podcast hosting is a service that stores your audio files and generates an RSS feed that distributes your episodes to podcast platforms like Apple Podcasts, Spotify, and Google Podcasts. Without a host, listeners can't discover or access your show on their favorite apps.
+A zip stitch wound closure is a non-invasive, adhesive device that closes lacerations by pulling wound edges together without needles or sutures. It uses an adjustable zip-tension mechanism for precise three-dimensional skin alignment, reducing scarring and eliminating the need for ER visits for minor to moderate cuts.
 ```
 
 ### List-Based Snippets
@@ -427,7 +435,7 @@ Podcast hosting is a service that stores your audio files and generates an RSS f
 Before publishing, verify:
 
 ### Content
-- [ ] 2,000+ words (or appropriate for content type)
+- [ ] 1,000-2,000 words (or appropriate for content type)
 - [ ] Primary keyword identified
 - [ ] Keyword density 1-2%
 - [ ] 3-5 secondary keywords included
@@ -496,4 +504,4 @@ Before publishing, verify:
 
 ---
 
-**Remember**: SEO serves the user, not the algorithm. Never sacrifice content quality, accuracy, or helpfulness for keyword optimization. The best SEO is great content that genuinely helps podcast creators succeed.
+**Remember**: SEO serves the user, not the algorithm. Never sacrifice content quality, accuracy, or helpfulness for keyword optimization. The best SEO is great content that genuinely helps The Protector feel more prepared, more organized, and more confident in an emergency. Write like Chase Carter, EMT-P — calm, capable, expert, human.
