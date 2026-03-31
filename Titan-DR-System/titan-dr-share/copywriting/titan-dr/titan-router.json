@@ -1,0 +1,184 @@
+{
+  "version": "1.0",
+  "description": "Machine-readable Titan content router. Used by local_worker.py to build Titan instructions per content type.",
+
+  "universal_files": {
+    "core": [
+      "core/titan-psychology.md",
+      "core/titan-language.md"
+    ],
+    "compliance": "references/titan-words-forbidden.md",
+    "quality_gate": "references/titan-deployment-checklist.md"
+  },
+
+  "universal_techniques": [
+    "open_loops",
+    "fractionation",
+    "cognitive_biases_min_5",
+    "nlp_patterns_min_3",
+    "future_pacing",
+    "mechanism_naming",
+    "neurochemical_sequence",
+    "concentration"
+  ],
+
+  "content_types": {
+    "vsl_standard": {
+      "pipeline": "vsl-production",
+      "format_file": "formats/titan-vsl.md",
+      "extra_core": ["core/titan-storytelling.md"],
+      "hook_files": ["references/titan-hook-library.md", "references/titan-video-hooks.md"],
+      "optional": ["references/titan-words-approved.md", "references/titan-swipe-file.md"],
+      "structures": ["frankenstein", "bible_narrative", "facebook_v1", "gundry_biosync", "elite_secret", "fast_expose", "rapid_pitch"],
+      "hook_formulas": ["authority_promise", "scientists_discover", "expose_hoax", "switching", "action_interactive"],
+      "phases_active": "all_15"
+    },
+
+    "vsl_story": {
+      "pipeline": "vsl-production",
+      "format_file": "formats/titan-story-vsl.md",
+      "extra_core": ["core/titan-storytelling.md"],
+      "hook_files": ["references/titan-hook-library.md", "references/titan-video-hooks.md"],
+      "optional": ["references/titan-words-approved.md"],
+      "structures": ["roosevelt_5bone"],
+      "output": {
+        "dual_hook": true,
+        "length_cuts": ["3m_master", "60s", "45s"]
+      },
+      "phases_active": "all_15"
+    },
+
+    "short_ad": {
+      "pipeline": "vsl-production",
+      "format_file": "formats/titan-facebook-ads.md",
+      "extra_core": [],
+      "hook_files": ["references/titan-hook-library.md", "references/titan-video-hooks.md"],
+      "structures": ["15s", "30s", "60s", "90s_mini_vsl"],
+      "phases_active": "skip_research_image_revisions"
+    },
+
+    "ugc_clip": {
+      "pipeline": "vsl-production",
+      "format_file": "formats/titan-facebook-ads.md",
+      "extra_core": [],
+      "hook_files": ["references/titan-hook-library.md", "references/titan-video-hooks.md"],
+      "ugc_ref": "references/titan-video-hooks.md",
+      "phases_active": "skip_research_masterscript_cameraplan_voiceover_imagerevisions"
+    },
+
+    "facebook_ad_copy": {
+      "pipeline": "copy-production",
+      "format_file": "formats/titan-facebook-ads.md",
+      "extra_core": [],
+      "hook_files": ["references/titan-hook-library.md"],
+      "cross_format": {
+        "mechanism_naming": "formats/titan-vsl.md"
+      },
+      "output": {
+        "variations": 5,
+        "files": ["ad_v1-v5.md", "image_briefs.md", "hooks.md"]
+      }
+    },
+
+    "landing_page": {
+      "pipeline": "copy-production",
+      "format_file": "formats/titan-landing-page.md",
+      "extra_core": [],
+      "cross_format": {
+        "ump_ums": "formats/titan-vsl.md",
+        "rock_bottom": "core/titan-storytelling.md",
+        "crossroads_close": "formats/titan-vsl.md"
+      },
+      "output": {
+        "files": ["landing_page.md", "landing_page.html", "copy_blocks.json"]
+      }
+    },
+
+    "listicle": {
+      "pipeline": "copy-production",
+      "format_file": "formats/titan-listicle.md",
+      "extra_core": ["core/titan-storytelling.md"],
+      "cross_format": {
+        "open_loops": "core/titan-psychology.md",
+        "concentration": "formats/titan-vsl.md"
+      },
+      "output": {
+        "files": ["listicle.md", "listicle_meta.json"]
+      }
+    },
+
+    "advertorial": {
+      "pipeline": "copy-production",
+      "format_file": "formats/titan-advertorial.md",
+      "extra_core": ["core/titan-storytelling.md"],
+      "cross_format": {
+        "ump_ums": "formats/titan-vsl.md"
+      },
+      "output": {
+        "files": ["advertorial.md", "headline_variants.md"]
+      }
+    },
+
+    "email_sequence": {
+      "pipeline": "copy-production",
+      "format_file": "formats/titan-email.md",
+      "extra_core": [],
+      "cross_format": {
+        "storytelling": "core/titan-storytelling.md",
+        "hook_as_subject": "references/titan-hook-library.md"
+      },
+      "output": {
+        "files": ["email_01-0N.md", "sequence_overview.md", "subject_lines.md"]
+      }
+    },
+
+    "quiz_funnel": {
+      "pipeline": "copy-production",
+      "format_file": "formats/titan-quiz-funnel.md",
+      "extra_core": [],
+      "cross_format": {
+        "offer_stacking": "formats/titan-landing-page.md"
+      },
+      "output": {
+        "files": ["questions.json", "results.json", "quiz_funnel.md"]
+      }
+    }
+  },
+
+  "audit_mode": {
+    "pipeline": "copy-audit",
+    "input_types": {
+      "landing_page": {
+        "files": ["formats/titan-landing-page.md"],
+        "check": "6-block structure, message match, bias deployment, compliance"
+      },
+      "ad_copy": {
+        "files": ["formats/titan-facebook-ads.md", "references/titan-hook-library.md"],
+        "check": "Hook strength, scroll-stopper anatomy, conversion block alignment"
+      },
+      "headlines": {
+        "files": ["references/titan-words-approved.md"],
+        "check": "I=B+C formula, strengtheners, entry device, awareness routing"
+      },
+      "email": {
+        "files": ["formats/titan-email.md"],
+        "check": "Subject line formula, email format adherence, CTA optimization"
+      },
+      "vsl_script": {
+        "files": ["formats/titan-vsl.md", "core/titan-storytelling.md"],
+        "check": "Structure adherence, UMP/UMS, hook formula, neurochemical arc"
+      }
+    }
+  },
+
+  "hook_routing": {
+    "library": "references/titan-hook-library.md",
+    "video_hooks": "references/titan-video-hooks.md",
+    "total_types": 21,
+    "temperature_map": {
+      "cold_4_5": ["story", "identity_challenge", "curiosity_gap", "culture_hijack", "hidden_enemy"],
+      "warm_2_3": ["benefit_stack", "authority_discovery", "social_proof", "before_after", "mechanism_reveal"],
+      "hot_1": ["promotional", "testimonial", "transformation_timeline"]
+    }
+  }
+}

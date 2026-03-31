@@ -1,0 +1,1353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PreparedPro Membership – SurviveX</title>
+    <meta name="description" content="Join PreparedPro by SurviveX — the preparedness membership that keeps you equipped, trained, and ready. Monthly supply drops, training platform, member discounts, and community.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+
+    <style>
+        /* ── Tokens ─────────────────────────────────────── */
+        :root {
+            --red: #E50027;
+            --red-hover: #CC0022;
+            --red-soft: rgba(229,0,39,0.08);
+            --red-glow: rgba(229,0,39,0.22);
+            --black: #0A0A0A;
+            --dark: #131313;
+            --g900: #1C1C1C;
+            --g700: #3D3D3D;
+            --g500: #6B6B6B;
+            --g300: #ADADAD;
+            --g100: #F2F2F2;
+            --white: #FFFFFF;
+            --font: 'Plus Jakarta Sans', 'SuisseIntl', system-ui, -apple-system, sans-serif;
+            --ease: cubic-bezier(.4,0,.2,1);
+            --max: 1120px;
+        }
+
+        /* ── Reset ──────────────────────────────────────── */
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+        body { font-family: var(--font); color: var(--black); background: var(--white); line-height: 1.6; overflow-x: hidden; }
+        img { max-width: 100%; display: block; }
+        a { text-decoration: none; color: inherit; }
+        button { font-family: var(--font); cursor: pointer; border: none; background: none; }
+        ul { list-style: none; }
+
+        /* ── Utility ────────────────────────────────────── */
+        .container { max-width: var(--max); margin: 0 auto; padding: 0 24px; }
+        .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0,0,0,0); }
+        .fade-in { opacity: 0; transform: translateY(28px); transition: opacity .7s var(--ease), transform .7s var(--ease); }
+        .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+        /* ── Announcement ───────────────────────────────── */
+        .announce {
+            background: var(--black);
+            color: var(--white);
+            text-align: center;
+            padding: 10px 16px;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: .3px;
+        }
+        .announce a { color: var(--red); text-decoration: underline; text-underline-offset: 2px; }
+        .announce a:hover { color: #ff3355; }
+
+        /* ── Nav ─────────────────────────────────────────── */
+        .nav {
+            position: sticky; top: 0; z-index: 100;
+            background: rgba(255,255,255,.97);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(0,0,0,.06);
+            height: 64px;
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 0 24px;
+        }
+        .nav-logo { display: flex; align-items: center; }
+        .nav-logo img { height: 32px; width: auto; }
+        .nav-links { display: flex; gap: 28px; font-size: 13px; font-weight: 700; letter-spacing: .5px; text-transform: uppercase; }
+        .nav-links a:hover { color: var(--red); }
+        .nav-cta {
+            background: var(--red); color: var(--white);
+            padding: 10px 22px; font-weight: 700; font-size: 12px;
+            letter-spacing: .5px; text-transform: uppercase;
+            border-radius: 3px; transition: background .2s var(--ease);
+        }
+        .nav-cta:hover { background: var(--red-hover); }
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+        }
+
+        /* ── Hero ────────────────────────────────────────── */
+        .hero {
+            position: relative;
+            min-height: 92vh;
+            display: flex; align-items: center;
+            background: var(--black);
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute; inset: 0;
+            background:
+                radial-gradient(ellipse 80% 60% at 20% 50%, rgba(229,0,39,.18) 0%, transparent 70%),
+                radial-gradient(ellipse 60% 80% at 80% 30%, rgba(229,0,39,.08) 0%, transparent 60%);
+        }
+        .hero::after {
+            content: '';
+            position: absolute; inset: 0;
+            background-image:
+                linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px);
+            background-size: 64px 64px;
+            pointer-events: none;
+        }
+        .hero-inner {
+            position: relative; z-index: 2;
+            max-width: 780px; margin: 0 auto;
+            padding: 100px 24px 80px; text-align: center;
+        }
+        .hero-badge {
+            display: inline-block;
+            background: rgba(229,0,39,.12);
+            border: 1px solid rgba(229,0,39,.5);
+            color: var(--red);
+            font-size: 11px; font-weight: 700;
+            letter-spacing: 2.5px; text-transform: uppercase;
+            padding: 6px 18px; margin-bottom: 28px;
+        }
+        .hero h1 {
+            font-size: clamp(42px, 7vw, 78px);
+            font-weight: 800; color: var(--white);
+            line-height: 1.04; letter-spacing: -1px;
+            margin-bottom: 24px;
+        }
+        .hero h1 em { color: var(--red); font-style: normal; }
+        .hero-sub {
+            font-size: clamp(16px, 2.2vw, 19px);
+            color: rgba(255,255,255,.65);
+            max-width: 560px; margin: 0 auto 20px;
+            font-weight: 400; line-height: 1.6;
+        }
+        .hero-who {
+            font-size: 13px; font-weight: 600;
+            color: rgba(255,255,255,.4);
+            letter-spacing: .5px; text-transform: uppercase;
+            margin-bottom: 36px;
+        }
+        .hero-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+        .btn-red {
+            background: var(--red); color: var(--white);
+            padding: 16px 36px; font-weight: 700; font-size: 14px;
+            letter-spacing: .5px; text-transform: uppercase;
+            border-radius: 3px; transition: all .2s var(--ease);
+            display: inline-flex; align-items: center; gap: 8px;
+        }
+        .btn-red:hover { background: var(--red-hover); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(229,0,39,.3); }
+        .btn-ghost {
+            background: transparent; color: var(--white);
+            padding: 16px 36px; font-weight: 700; font-size: 14px;
+            letter-spacing: .5px; text-transform: uppercase;
+            border: 2px solid rgba(255,255,255,.25);
+            border-radius: 3px; transition: all .2s var(--ease);
+        }
+        .btn-ghost:hover { border-color: rgba(255,255,255,.6); transform: translateY(-2px); }
+
+        .hero-stats {
+            display: flex; gap: 40px; justify-content: center;
+            margin-top: 64px; flex-wrap: wrap;
+        }
+        .hero-stat { text-align: center; }
+        .hero-stat .num {
+            font-size: 36px; font-weight: 800; color: var(--white);
+            letter-spacing: -1px;
+        }
+        .hero-stat .num em { color: var(--red); font-style: normal; }
+        .hero-stat .lbl {
+            font-size: 11px; font-weight: 600;
+            letter-spacing: 1.5px; text-transform: uppercase;
+            color: rgba(255,255,255,.35); margin-top: 4px;
+        }
+
+        /* ── Trust Strip ─────────────────────────────────── */
+        .trust-strip {
+            background: var(--g100); border-top: 1px solid rgba(0,0,0,.04);
+            border-bottom: 1px solid rgba(0,0,0,.04);
+            padding: 18px 24px;
+        }
+        .trust-strip-inner {
+            max-width: var(--max); margin: 0 auto;
+            display: flex; flex-wrap: wrap; gap: 24px 36px;
+            justify-content: center; align-items: center;
+        }
+        .trust-strip-item {
+            display: flex; align-items: center; gap: 8px;
+            font-size: 12px; font-weight: 700; color: var(--g500);
+            letter-spacing: .5px; text-transform: uppercase;
+        }
+        .trust-strip-item svg { width: 18px; height: 18px; color: var(--red); flex-shrink: 0; }
+
+        /* ── Section Common ──────────────────────────────── */
+        .section { padding: 100px 24px; }
+        .section-dark { background: var(--dark); color: var(--white); }
+        .section-gray { background: var(--g100); }
+        .section-label {
+            font-size: 11px; font-weight: 700;
+            letter-spacing: 3px; text-transform: uppercase;
+            color: var(--red); margin-bottom: 14px;
+        }
+        .section-title {
+            font-size: clamp(30px, 5vw, 50px);
+            font-weight: 800; line-height: 1.08;
+            letter-spacing: -.5px; margin-bottom: 18px;
+        }
+        .section-sub {
+            font-size: 16px; color: var(--g500);
+            max-width: 560px; margin-bottom: 56px; line-height: 1.7;
+        }
+        .section-dark .section-sub { color: rgba(255,255,255,.55); }
+        .centered { text-align: center; }
+        .centered .section-sub { margin-left: auto; margin-right: auto; }
+
+        /* ── Problem Section ─────────────────────────────── */
+        .problem-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 24px;
+        }
+        .problem-card {
+            background: var(--white);
+            border: 1px solid rgba(0,0,0,.06);
+            padding: 32px 26px; border-radius: 4px;
+            transition: all .25s var(--ease);
+            position: relative; overflow: hidden;
+        }
+        .problem-card::before {
+            content: '';
+            position: absolute; top: 0; left: 0; right: 0;
+            height: 3px; background: var(--red);
+            transform: scaleX(0); transform-origin: left;
+            transition: transform .3s var(--ease);
+        }
+        .problem-card:hover::before { transform: scaleX(1); }
+        .problem-card:hover { box-shadow: 0 8px 32px rgba(0,0,0,.06); transform: translateY(-3px); }
+        .problem-icon {
+            width: 44px; height: 44px;
+            background: var(--red-soft);
+            border-radius: 4px;
+            display: flex; align-items: center; justify-content: center;
+            margin-bottom: 18px;
+        }
+        .problem-icon svg { width: 22px; height: 22px; color: var(--red); }
+        .problem-card h3 { font-size: 19px; font-weight: 700; margin-bottom: 8px; }
+        .problem-card p { font-size: 14px; color: var(--g500); line-height: 1.65; }
+
+        /* ── Pillars Section ─────────────────────────────── */
+        .pillars-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 28px;
+        }
+        .pillar {
+            background: var(--g900);
+            border: 1px solid rgba(255,255,255,.06);
+            padding: 36px 28px; border-radius: 4px;
+            transition: all .3s var(--ease);
+            position: relative;
+        }
+        .pillar:hover {
+            border-color: rgba(229,0,39,.3);
+            box-shadow: 0 0 40px rgba(229,0,39,.08);
+            transform: translateY(-4px);
+        }
+        .pillar-num {
+            font-size: 11px; font-weight: 800;
+            letter-spacing: 3px; text-transform: uppercase;
+            color: var(--red); margin-bottom: 16px;
+            display: flex; align-items: center; gap: 10px;
+        }
+        .pillar-num::after {
+            content: '';
+            flex: 1; height: 1px;
+            background: rgba(229,0,39,.25);
+        }
+        .pillar h3 {
+            font-size: 22px; font-weight: 700;
+            color: var(--white); margin-bottom: 10px;
+        }
+        .pillar p {
+            font-size: 14px; color: rgba(255,255,255,.5);
+            line-height: 1.7;
+        }
+
+        /* ── Plans Section ───────────────────────────────── */
+        .toggle-wrap {
+            display: flex; align-items: center;
+            justify-content: center; gap: 14px;
+            margin-bottom: 48px;
+        }
+        .toggle-label {
+            font-size: 14px; font-weight: 600; color: var(--g500);
+            cursor: pointer; transition: color .2s;
+        }
+        .toggle-label.active { color: var(--black); }
+        .toggle-track {
+            width: 52px; height: 28px;
+            background: var(--g300);
+            border-radius: 14px; cursor: pointer;
+            position: relative; transition: background .25s var(--ease);
+        }
+        .toggle-track.annual { background: var(--red); }
+        .toggle-knob {
+            position: absolute; top: 3px; left: 3px;
+            width: 22px; height: 22px;
+            background: var(--white);
+            border-radius: 50%;
+            transition: transform .25s var(--ease);
+            box-shadow: 0 1px 4px rgba(0,0,0,.15);
+        }
+        .toggle-track.annual .toggle-knob { transform: translateX(24px); }
+        .toggle-save {
+            background: rgba(229,0,39,.1);
+            color: var(--red); font-size: 11px;
+            font-weight: 700; letter-spacing: 1px;
+            padding: 4px 10px; border-radius: 20px;
+        }
+
+        .plans-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+            gap: 24px; align-items: start;
+        }
+        .plan {
+            border: 2px solid rgba(0,0,0,.07);
+            border-radius: 6px; overflow: hidden;
+            background: var(--white);
+            transition: all .3s var(--ease);
+        }
+        .plan:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 48px rgba(0,0,0,.08);
+        }
+        .plan.featured {
+            border-color: var(--red);
+            box-shadow: 0 8px 32px var(--red-glow);
+        }
+        .plan-head {
+            padding: 28px 28px 24px;
+            border-bottom: 1px solid rgba(0,0,0,.06);
+        }
+        .plan.featured .plan-head {
+            background: var(--red);
+            border-bottom-color: var(--red-hover);
+        }
+        .plan-tier {
+            display: inline-block;
+            background: var(--red); color: var(--white);
+            font-size: 10px; font-weight: 700;
+            letter-spacing: 2px; text-transform: uppercase;
+            padding: 4px 10px; border-radius: 2px;
+            margin-bottom: 14px;
+        }
+        .plan.featured .plan-tier { background: rgba(255,255,255,.2); }
+        .plan-name {
+            font-size: 26px; font-weight: 800;
+            margin-bottom: 4px;
+        }
+        .plan.featured .plan-name { color: var(--white); }
+        .plan-desc {
+            font-size: 13px; color: var(--g500);
+        }
+        .plan.featured .plan-desc { color: rgba(255,255,255,.7); }
+        .plan-price {
+            display: flex; align-items: baseline;
+            gap: 4px; margin-top: 16px;
+        }
+        .plan-amt {
+            font-size: 46px; font-weight: 800;
+            letter-spacing: -2px;
+        }
+        .plan.featured .plan-amt { color: var(--white); }
+        .plan-per { font-size: 14px; color: var(--g500); }
+        .plan.featured .plan-per { color: rgba(255,255,255,.6); }
+        .plan-was {
+            font-size: 13px; color: var(--g300);
+            text-decoration: line-through;
+            margin-top: 4px; display: none;
+        }
+        .plan.featured .plan-was { color: rgba(255,255,255,.4); }
+        .plans-annual .plan-was { display: block; }
+        .plan-body { padding: 28px; }
+        .plan-features {
+            display: flex; flex-direction: column;
+            gap: 13px; margin-bottom: 28px;
+        }
+        .plan-features li {
+            display: flex; align-items: flex-start;
+            gap: 10px; font-size: 14px; color: var(--g700);
+        }
+        .plan-features li::before {
+            content: '';
+            width: 18px; height: 18px; flex-shrink: 0;
+            background: var(--red-soft);
+            border-radius: 50%;
+            margin-top: 2px;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23E50027'%3E%3Cpath d='M12.207 4.793a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-2.5-2.5a1 1 0 011.414-1.414L6.5 9.086l4.293-4.293a1 1 0 011.414 0z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: 12px;
+        }
+        .plan-cta-btn {
+            display: block; width: 100%;
+            padding: 15px; text-align: center;
+            background: var(--black); color: var(--white);
+            font-weight: 700; font-size: 13px;
+            letter-spacing: .5px; text-transform: uppercase;
+            border-radius: 3px; transition: all .2s var(--ease);
+        }
+        .plan-cta-btn:hover { background: var(--g700); }
+        .plan.featured .plan-cta-btn {
+            background: var(--white); color: var(--red);
+        }
+        .plan.featured .plan-cta-btn:hover { background: var(--g100); }
+        .plan-guarantee {
+            text-align: center; font-size: 12px;
+            color: var(--g500); margin-top: 14px;
+        }
+        .plans-footer {
+            text-align: center; margin-top: 32px;
+            font-size: 14px; color: var(--g500);
+        }
+        .plans-footer strong { color: var(--black); }
+
+        /* ── Value Comparison ─────────────────────────────── */
+        .value-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 32px; align-items: start;
+            max-width: 900px; margin: 0 auto;
+        }
+        @media (max-width: 768px) { .value-grid { grid-template-columns: 1fr; } }
+        .value-col {
+            padding: 36px 32px; border-radius: 6px;
+        }
+        .value-col.without {
+            background: var(--g100);
+            border: 1px solid rgba(0,0,0,.06);
+        }
+        .value-col.with {
+            background: var(--dark);
+            border: 2px solid var(--red);
+            color: var(--white);
+            position: relative;
+        }
+        .value-col.with::before {
+            content: 'BETTER VALUE';
+            position: absolute; top: -12px; left: 50%;
+            transform: translateX(-50%);
+            background: var(--red); color: var(--white);
+            font-size: 10px; font-weight: 700;
+            letter-spacing: 2px; padding: 4px 14px;
+            border-radius: 2px;
+        }
+        .value-col h3 {
+            font-size: 18px; font-weight: 700;
+            margin-bottom: 24px; padding-bottom: 16px;
+            border-bottom: 1px solid rgba(0,0,0,.08);
+        }
+        .value-col.with h3 { border-bottom-color: rgba(255,255,255,.1); color: var(--white); }
+        .value-line {
+            display: flex; justify-content: space-between;
+            align-items: center; padding: 10px 0;
+            font-size: 14px; color: var(--g700);
+        }
+        .value-col.with .value-line { color: rgba(255,255,255,.7); }
+        .value-line .price { font-weight: 700; }
+        .value-line.included .price { color: var(--red); font-weight: 800; }
+        .value-total {
+            margin-top: 20px; padding-top: 16px;
+            border-top: 2px solid var(--black);
+            display: flex; justify-content: space-between;
+            align-items: baseline;
+        }
+        .value-col.with .value-total { border-top-color: var(--red); }
+        .value-total .total-label { font-size: 14px; font-weight: 600; }
+        .value-total .total-num { font-size: 32px; font-weight: 800; }
+        .value-col.with .value-total .total-num { color: var(--white); }
+        .value-savings {
+            text-align: center; margin-top: 36px;
+            font-size: 18px; font-weight: 700; color: var(--red);
+        }
+        .value-savings span {
+            font-size: 32px; font-weight: 800;
+            display: block; margin-top: 4px;
+        }
+
+        /* ── Box / Supply Drop ───────────────────────────── */
+        .box-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px; align-items: center;
+        }
+        @media (max-width: 768px) { .box-grid { grid-template-columns: 1fr; } }
+        .box-img {
+            border-radius: 6px; overflow: hidden;
+            aspect-ratio: 4/3; background: var(--g100);
+        }
+        .box-img img { width: 100%; height: 100%; object-fit: cover; }
+        .box-list { display: flex; flex-direction: column; gap: 20px; }
+        .box-list li { display: flex; gap: 16px; align-items: flex-start; }
+        .box-num {
+            width: 32px; height: 32px; flex-shrink: 0;
+            background: var(--red); color: var(--white);
+            font-size: 15px; font-weight: 700;
+            border-radius: 50%; display: flex;
+            align-items: center; justify-content: center;
+            margin-top: 2px;
+        }
+        .box-list h4 { font-size: 17px; font-weight: 700; margin-bottom: 3px; }
+        .box-list p { font-size: 14px; color: var(--g500); line-height: 1.6; }
+
+        /* ── Testimonials ────────────────────────────────── */
+        .testi-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+        }
+        .testi {
+            background: var(--white);
+            border: 1px solid rgba(0,0,0,.06);
+            border-radius: 4px; padding: 30px 26px;
+            transition: all .25s var(--ease);
+        }
+        .testi:hover { box-shadow: 0 8px 28px rgba(0,0,0,.06); transform: translateY(-3px); }
+        .testi-stars { color: var(--red); font-size: 16px; letter-spacing: 2px; margin-bottom: 16px; }
+        .testi blockquote {
+            font-size: 15px; line-height: 1.7;
+            color: var(--g700); margin-bottom: 20px;
+            font-style: italic;
+        }
+        .testi cite {
+            font-size: 13px; font-weight: 700;
+            color: var(--black); letter-spacing: .3px;
+            font-style: normal; display: block;
+        }
+        .testi .role { font-size: 12px; color: var(--g500); margin-top: 2px; }
+
+        /* ── Trust Bar ───────────────────────────────────── */
+        .trust-bar {
+            background: var(--black); padding: 32px 24px;
+        }
+        .trust-bar-inner {
+            max-width: var(--max); margin: 0 auto;
+            display: flex; flex-wrap: wrap;
+            gap: 28px; justify-content: center;
+        }
+        .trust-item {
+            display: flex; align-items: center; gap: 8px;
+            color: rgba(255,255,255,.7); font-size: 12px;
+            font-weight: 600; letter-spacing: .5px;
+            text-transform: uppercase;
+        }
+        .trust-icon { font-size: 18px; }
+
+        /* ── FAQ ──────────────────────────────────────────── */
+        .faq-list {
+            max-width: 740px; margin: 0 auto;
+        }
+        .faq-item { border-bottom: 1px solid rgba(0,0,0,.08); }
+        .faq-item:first-child { border-top: 1px solid rgba(0,0,0,.08); }
+        .faq-q {
+            width: 100%; padding: 22px 0;
+            display: flex; justify-content: space-between;
+            align-items: center; gap: 16px;
+            font-size: 17px; font-weight: 600;
+            color: var(--black); text-align: left;
+        }
+        .faq-q:hover { color: var(--red); }
+        .faq-chevron {
+            width: 20px; height: 20px; flex-shrink: 0;
+            color: var(--red);
+            transition: transform .25s var(--ease);
+        }
+        .faq-item.open .faq-chevron { transform: rotate(180deg); }
+        .faq-a {
+            max-height: 0; overflow: hidden;
+            transition: max-height .35s ease;
+        }
+        .faq-a-inner {
+            padding: 0 0 22px;
+            font-size: 15px; color: var(--g500);
+            line-height: 1.75;
+        }
+        .faq-a-inner a { color: var(--red); font-weight: 600; }
+
+        /* ── Final CTA ───────────────────────────────────── */
+        .final-cta {
+            background: var(--red);
+            padding: 100px 24px; text-align: center;
+            position: relative; overflow: hidden;
+        }
+        .final-cta::before {
+            content: '';
+            position: absolute; inset: 0;
+            background-image:
+                linear-gradient(rgba(255,255,255,.04) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px);
+            background-size: 64px 64px;
+        }
+        .final-cta > * { position: relative; z-index: 1; }
+        .final-cta h2 {
+            font-size: clamp(34px, 5vw, 56px);
+            font-weight: 800; color: var(--white);
+            margin-bottom: 18px; letter-spacing: -.5px;
+        }
+        .final-cta p {
+            font-size: 17px; color: rgba(255,255,255,.75);
+            max-width: 480px; margin: 0 auto 36px;
+        }
+        .final-btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+        .btn-white {
+            background: var(--white); color: var(--red);
+            padding: 16px 36px; font-weight: 700; font-size: 14px;
+            letter-spacing: .5px; text-transform: uppercase;
+            border-radius: 3px; transition: all .2s var(--ease);
+        }
+        .btn-white:hover { background: var(--g100); transform: translateY(-2px); }
+        .btn-ghost-white {
+            background: transparent; color: var(--white);
+            padding: 16px 36px; font-weight: 700; font-size: 14px;
+            letter-spacing: .5px; text-transform: uppercase;
+            border: 2px solid rgba(255,255,255,.35);
+            border-radius: 3px; transition: all .2s var(--ease);
+        }
+        .btn-ghost-white:hover { border-color: rgba(255,255,255,.7); transform: translateY(-2px); }
+        .final-guarantee {
+            margin-top: 24px; font-size: 13px;
+            color: rgba(255,255,255,.55); font-weight: 600;
+            letter-spacing: .3px;
+        }
+
+        /* ── Footer ──────────────────────────────────────── */
+        .footer {
+            background: var(--black); color: rgba(255,255,255,.5);
+            padding: 64px 24px 32px;
+        }
+        .footer-inner {
+            max-width: var(--max); margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 40px;
+        }
+        @media (max-width: 768px) {
+            .footer-inner { grid-template-columns: 1fr 1fr; }
+        }
+        .footer-brand p { font-size: 13px; line-height: 1.7; margin-top: 12px; }
+        .footer-brand .logo { margin-bottom: 4px; }
+        .footer-brand .logo img { height: 28px; width: auto; }
+        .footer-links h4 {
+            font-size: 12px; font-weight: 700;
+            letter-spacing: 1px; text-transform: uppercase;
+            color: var(--white); margin-bottom: 16px;
+        }
+        .footer-links li { margin-bottom: 10px; }
+        .footer-links a { font-size: 13px; transition: color .15s; }
+        .footer-links a:hover { color: var(--white); }
+        .footer-bottom {
+            max-width: var(--max); margin: 40px auto 0;
+            padding-top: 24px;
+            border-top: 1px solid rgba(255,255,255,.08);
+            display: flex; justify-content: space-between;
+            flex-wrap: wrap; gap: 12px;
+            font-size: 12px; letter-spacing: .3px;
+        }
+
+        /* ── Sticky Mobile CTA ───────────────────────────── */
+        .sticky-cta {
+            position: fixed; bottom: 0; left: 0; right: 0;
+            z-index: 90;
+            background: var(--white);
+            border-top: 1px solid rgba(0,0,0,.08);
+            padding: 12px 16px;
+            display: none;
+            align-items: center; justify-content: space-between;
+            gap: 12px;
+            box-shadow: 0 -4px 20px rgba(0,0,0,.08);
+        }
+        .sticky-cta-text {
+            font-size: 13px; font-weight: 600; color: var(--black);
+        }
+        .sticky-cta-text span { display: block; font-size: 11px; color: var(--g500); font-weight: 400; }
+        .sticky-cta-btn {
+            background: var(--red); color: var(--white);
+            padding: 12px 24px; font-weight: 700; font-size: 12px;
+            letter-spacing: .5px; text-transform: uppercase;
+            border-radius: 3px; white-space: nowrap;
+            transition: background .2s;
+        }
+        .sticky-cta-btn:hover { background: var(--red-hover); }
+        @media (max-width: 768px) {
+            .sticky-cta { display: flex; }
+            body { padding-bottom: 72px; }
+        }
+
+        /* ── Responsive ──────────────────────────────────── */
+        @media (max-width: 640px) {
+            .section { padding: 72px 20px; }
+            .hero-stats { gap: 24px; }
+            .hero-stat .num { font-size: 28px; }
+            .hero-btns { flex-direction: column; align-items: center; }
+            .btn-red, .btn-ghost { width: 100%; text-align: center; justify-content: center; }
+            .value-col { padding: 28px 24px; }
+        }
+
+        /* ── FAQ Schema (hidden) ─────────────────────────── */
+        .schema-faq { display: none; }
+    </style>
+</head>
+
+<body>
+
+    <!-- Announcement Bar -->
+    <div class="announce">
+        Limited time: Get your first supply drop FREE when you join annually
+        <a href="#plans">See Plans</a>
+    </div>
+
+    <!-- Nav -->
+    <nav class="nav">
+        <a href="https://survive-x.com" class="nav-logo"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASwAAABECAYAAAA7rQj2AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAABLKADAAQAAAABAAAARAAAAAC6fm3OAAA2HklEQVR4Ae19CXwcxZV3VXX39MxItiRbsuTbxocsy7AQyLKEsEDYHIRdcpMQQrLL8u31hSSbJQm7G4KdkIPEObjyZXOxyeZaAjk4siTAAgkkC5jbsiUjn/Khy5asa6avqu//etTjGWmOHmnGdjZT/sk901P9qupV1b/ee/XqNWfVVOVAlQNVDhxHDhwy2/6hjmm3jTOPK5TLU39KcfVD/Hd5nAk+xuTNLdb2D/Xr68/TNfWYgXsJJr+lH8d6VouqcqDKgSoHmC7EsJJqF5CqTlOs0eO8Tyk2qpga18AfjxF2sXM2MiaUYBdFAFa453NOVPlX5UCVA1UOHE8OjCXGf+JFvLOlZLfM5Rrjnvtx0+RnK8ke0RnnNpcDnLMN74+saWVMXYzvgxIVJEmsCljHs6eqZVU5kIMDkB0E/vTJPxIyaG6edOlOxiAQpes5Y+xYyfYk5452HtY5G/VBiOsjdSMdR/DZMtB0yfgDClfF9WsEZ+tcye5BuX6qqoQn3bCoVugPhQMdrD3SwqzooKGv0blYggkbUZIPTri8+zAbHvwW229tZJi/JzABKPgetsKsYTX1UZ2tPipYC8BECuUdPOh43eNMjq5h3dZMqigZFD6k4IqPnAAL6P0c1MOVJuNXJ5nqdQV7NKb4VS40xSpgzYTT1WeqHJgFBwACYpC1NRumukKpyLthsGkDuShJEZ4mVULjh2rVnAc/IFu/8Tfu6HOL2MGJWRQ340dfZqvN/ojWWse1q0Hkz20ml0GBgwSomMuZY5r6zqjid/fY7f++hHXsAeC6pRQmoAxqCvYsBuUQyQNhGNeHXS6PakrdXcv0U23uPhjl3q4apQ8nueeQRFZNVQ5UOXCcOEBq1Z9F2to451/B5L8I0gVz8BeoPDQhcZ9F8OcwNuBKdb3nHP5eC+sbP05V9IvZzVZE50Qib9C58UVINafYqCEZvjPrCXsTI4kIks9ztlQf2udu/91ZjKodLvUb7afXG+LchKf9qs56/uU+c8OqBo2/YdSVj0g9MlzH3LcMufZvuKH317jibbBlbasCVjjeVnNlcIBW3tVsVH+U9VkXlriqZpD5g/uYAqtT14Nl34lwccZEEW2PwADJdqT4qHQGvnm8QIvAqiZi/oXO9K8LruoJrAqlKEzhLlP7PE+8b6+79YlSQKsQ3Vy/VQErF1eq93JygIAKq15DJFJzLgymS23Pfdpz2YtNrGs05wPVm2kOpMGKu9/RmTgjWQSsggdJ2oIOZtlMfExalQctAqu5ACvO9a/D7F1P0l+YRBIhcu5zKwxaVcAK0xvVPOwwWz1XRYzXaFxcK5l8lQnfGEexYcm8Lws7eUsD2zNcZVNuDmyEzeoDkVPbSbKCcT00WAXU0qAlAVoVlLRmClZBPWEkJzuUL2ltdbc+Xgnpe1aABUTF8+1GHxs0EixmzGM1Ypw5k5Z/7COwCVnLIp7FJtyF7CDptrDVhYTsgAvV6wnnwFHWPs+LqGsZV/+IyRMlFYHWXZpItGuDjr1tyLL/FbtFIye8sidhBYbY6Su8iHWXycWZ8NaeUQ0rDVppsIIayKEGhpWspjZmErT2mlK9tcbZ/uzU32f7vWTASoHUkugoi9dg4DYpLbJGx3Yn+mGpx2UjZzwGTILfF7ME50fhwdqvKb4/odg+zXX2usw7ojE90ci6EshT0q7CbBtbfb50DoywtY12RPsibC7vxS7RtOlGA4jUAVuxTcO2/dmZbnGXXrPfjycwX4z+SNu3arm4Ei4As6o0gRakgbLbtNJgVaIamK8xMdQSKu9jhy35F+vKbC4oCbD6WXst9jQW6IZxkRDqjWD/WdjlWEzqQUCIVl5KwXf6TLsLMMpBuuK9+NsG77MnbMl+E3WTHaMsMYZt2wSyBY/SI9V0EnDgIFsUN8yGm7ECXU2SQb4OIk9HTCbLYfIdTVbnvSdB1U+aKvQY68+uFeoxqErm7OAq1aRyg1a5wSpg/OQidtkCe9uPg3vluIbyw6JVIsHWLrBNdTkcXa+CQtBGjAs2OcMYEAFgOlaHJRpTSwBvr+OaTDha9H8MGf2hcrwf8OO8bVsO5v1vp6EZdW83mAJYBT2du8WYjKQamliMNim24je8as9KMyqmsTdFlDBnK10FBFNn6njEEPLzjtnEei02493DSoEV1ZXwAW5Wl+FjWQHLtzcFzMh17WFLYv162/nJiHEnqvAFgFcb6bcEUpCa8C9conyU38LfpB4fizB2IRPe5t7owqZwVKq5jisHBHsPSU9h+pj6FdvwZxyMxF5/XOt4khfmKXVWcHC3XFUlepDWIgaTnxdG09W9rLmmVNqVBCuqC8114MWpj2DXsdS6FcpfELBIJTCNOe+OCPEjbGO/igblTI1xUytB4rEvInP+i5bk83un/l79fuI5AD0fXsjhEzkSRgXbEP6J//05oU3Ul0MVnMqpNGhB0ioVtNJgRQb2ElwXptah0PfU/OZzT2f1xwewFM45GUb9lYbgt2N3aH4Yta9QA3L9BqY7Uml3AIlLmRe5SFXvVYADQuo/gFxvoX+KJsqD/kw6SjxVNPMfUAalFG0uVSTNBLTSYEUG9lnsBhZrEElCgqmExWRoz/diNOn3nBIW0EM7bMh3wuj0RSClWS6pKrNCtP0Jie23I1byscz71c8nDwfm2/IXCSXvRDwir9CkI7URecaTjH292Yo+cPK04MTXhEv2DM7MVawiBFqwIZJN6wt6pPG6XrZqQb7CAFb1dWbsrznXvgkZYcauC/noZ973TQlKdDSzF8t6DjInYB1mp67RBL8BFaghhpQ7pbqPewbn361ug5ebu+Wjx1mHjYOon4a7yvNkRM017WhgwnN7xOHqZ0cN+0bOninrilq+1pwYSrZg/4VFfyLnRCtTlWj/FqBlaFx9TI9Gr8kFWpNgdQUk5s+g2LlkY6pUmpzfLhfqHnwua0HT+LgFDfdM9xrYI1ZVQrIiJlGhFpf7RjT+i0oxrUq3PBxYbHV1OUr7Z1DbBklBUt/RgAyu8M866DH5fU8T/7RmrHugPKX+76GyyKp/HJtMjwDwVS7AL1dL06ClAFqR6DWjGZJWDxx/IVkdF7Ci9pAtEweVX5CaVnYXl2mAtdw87RRDsXcWO/A4G0YjhASCoKq7V4539M6GTvXZ48OBZmvrg5amPgqbx9MAqCEAVxLXQUhXz7pKfr7HMj7SPL617/jU5verFM5+l9AF/xSkrK4A5CvVgjRoQdKyAFqBpBWPydcKVXnJitpFEjciUexz0eZKjIlpflhK2G8xpDa/1CMEtHoEf1RxSiQLBn/+DfxHDYJ7+9GIJmDQrabfFw4snNh+f1/Nhh7uyvciCuQySFWdXBc/aRjveP73pQ2l1BPj1heI8N+sVZrGxLYnB+KtHzM8/SY4JKyjesyaaJ7GpNx7ua8esmiU9SZX3eoqUYfd21HYI+fmeawst2luawCrJPNubJno/HlZiE4h4ndKcO8RSHPtZttD8Fw/H9b94HbRawqouBXhnLbBESQQD+OQOe5HESsnDjtYHJ99aY5CZsDYfl+TteHNnP2YfA7/4BL5tiE4GRwtJZ9groVzlknwJzzDTzDH8H6AGEkOJ7gaZSke45UPsPYa9MUcZbJaXamop7gBi51BBaBTbExCy7LleJRZww1s1wj6akZ40xtf/6aIx2/CAadWIjAjIiFbTYZ+AIgDP7CbXNu+VTejl0U4u85RcnElJl0AVg7jNzYlO74RspolZwPvj6UxdnbzRGSkA74j81NIfey3fJ8IhdChQ2DEo4h4ukUIfhDKOjRKGVdMtKDLV6KQNaYSC2Hoa4Z+ayaFe8WCRNdd+WjiPu8x21bXKGbaBTJl/kSec2O207eQZdtR+szVqwxlxEqhM2EnB5rZ7rSK44eyjVirHWZMU6Ez6xB8hkMsvcDIvt3q7N6YAURkV0gY5mKd81bwaBEUY8KsAZs5LwiH79IiYnmYehJ9l9vJBdbO7qDMqVeKrgB/6GVh6NGzRNO2j+ymmEujbHUT9p2aw0aMC9rbaHW+TJO5L7r2FEjp8TBl07PMtnrmsV1H6WOuVEofEj1LqLGFyc49uWgF9xR8DPuic5oNl7dAh1lvCLVOKr4Kk3kRvtdh/JuUF+F6E/BHG4Aq0u0x/oL05Bbp8j2NbDuOmZWOOQRaUY9/zoWkVWnQoo0S1NuxlfqcZ9u3VQq0UmAl9mG3paJgRf2RpRImjbHlEIvg6BYe+0liQrTBB4x49B8ahp+fFmJEsXdoh2LbFkOvPROr1+uSyltpmLGH4O6eN/Wwc6KmGvosQnE0h/Wl17CeaBF5C6AyfRSANhCE0jcBIJaHpaODDo/Gvg058Y6ggo2mtRSxFW/HZKAXBRRN2DVjnpI9N7D2v9yInTbyaRuKuOscpl8G7+RLAWZrsAL6IXFRQceW2jdYXN6he/zLYepJRk1HRXpQl/dh0mCcTE9uVLu0Vom/9X2ip/+cdYfoQU0f42bT+5nVt3PM1N9Zz7R3GrT3FCKl2qv2bWPtf8XQXk3p/4gd4NPDlE0HZY+akc9D7M5poIU0Ok9Xkc9gXC7CMaGitYn6vPFfWrA5F6D0stNq9Ehi2WEVeWVMqtd6GnsVNACMDw3rLpksUrWmye4n/54f6+l8qMHIJbo1Tf10ULb96GXH6Sh1l7tlYtvPAVos6gkftKiM4q1KVaWU/6n2oItY6xwRl9l1LBKBLJ+8jZlRBvvjdRAoyiJpHZOsKg9W1P4swHKF2xJFl5TiykCb3Qglv9sYPmoqBHjjUwLS+2pfgu1DWfseYRfcuy46vGRBDmCjygRpTvRIi63EJWB2lBgSLim8JYhtzsy7jm2YB1vcJahjfVg6NDQhRv1bJh2Xme1zGLuAdk3DDC5a5bGP/Sgmr7MbRxMGTOdCU2kfR+zuV/lvAwGVyaML6ADEdNT5E8oTw+D72VgAjGK6IYn7kM6OHGDrYJPoPJxZV/pMk1xI8SFMwDPTE29qpozvfjheLn88kkzup9uCideC/qvDPEv5qb1JIR9Zzzp98IQaUm9y/mpIJPRzwURgiRhbDyFTTsDSo3PfhFUCZ9J8FacgLepj2CKGoSF8AiVndRW+iL5o63Ld887XeeTdcNU4D7fghZ3KVsgEkukCgLGxGvz5iMHVBfWmsUlZ7Q+S+0fBik35kUBrIN6uDE/cRJIW/ZxV2Sn5S/1KXEffOVBzHsKY2oFJ/nr0x3VWmUHrGFhVVg3MbH8WYCEMTC0MqiUl2k1EwPj32dGYGJdyy5Bav8sW9ohp2Ufq2L6jIJeefxeyR11ILnuKFYDVfiUqZtIgCtORpKch9EkS3o2dmbRHDbU8wuWcJAZ7GDrUdAxOB74z2zLpmEK2SWzo09GkMMmfhJJDwGO8xoy9BsaQ2zgXK6dOCqp3kss9MUM8YI0w2zXVIZSwDO0vmAg4JWdx01SNqNQ0wKJJjp3eM+jAbbEa06CDK/YRh4vNJC287B9iVqeQt19YtxZqL4KfPQf++cVhDD2Lpf09YXaaSaLBjvGSXA0eZssa8Iqnv4fiTP2bK0vWPXJGTir588es7b/O/IGOmPXr806PSe/vPCHfDriPEbWp/ZH5TL7PBF70h9hWr9SZurU36v0VxvRj+fLnu9800XEPQAs+ROUFLRrD1KcuV0cMrv39/MTWnkPR1r+KKP3bZMOyywRaJwKsiJdZgAXhSsEzF6nYMKc8qURTAmi+GLr+dVDhxvB9X1SZL7lm5OlBb92WIej7g8zpLUl0FqIt4gkYpIsPUqoFSRzI2bvIajmA3ePJmtF92QoXCo12AcIk6mwAwZFazduXmV95sl1xgpdwya+1YM8fwosgsYR/ASvyylxHm3z3DqnuoneyoYZigLftxvbzsjD8R8dFbc4XokbHGowvwSQHS9AlxRMkPAU1/cctyc6nKXc8tmEB8zzENgvzdIo+tRevE98aKKfg+3YXfke4TSwtmCZlVrR5erKj8Usjip0ZBjhpAsF5dcDTjFsus4/psmTLgzr0Bijp12PR2EBqHaSa6YWVeIfADrHMV+K9XJ8Ez99cz/YNlUiCEWhBPeTlUg9TzFZYt4WCEAGPE6sWIaFaNCZJa8I6yJM4Ezxr9fBEgRXxN3sWOqwXMY3Cj9TJHiIVklZTgFUthuh6ydU7MRA365q4SzfFHfOikX/p09edA8LZ5eXpYc9Vf1xKJQh1sca/xNijWXZieNqelds/O3fBZI+DHXzbnNF3HwlyUBxzgNXpmWpB8FuuKw0aSGITsP70Glz/KsB8fa6VnKQSONcd0IX3daKD5yT31DN0v1gi3pAaB5vX6ql5rUjs/djiOivMJKf2or87PKF9hlpOtKLSXQ/709yw/E+1Vzqepz+XroswOkB3hBaSYomkSZS1glTnzLy90daVAO9/xZgKC7zQRPnnF028mI5yeTi2egk3I5/GoPsGDOkbaNEI267MuuT7TP0KHp5nmTWX58tT7D6ph47Gr8Q4uRf1JGFyRol4DTvxEEwOt8LI/ll8t0xm/ADG4K+h0Rvxbr+vOVx+GOPyF5AO/8WImHB38B5LKnY1jHdP+mM/RMmUD8D/OPrtqkruBuarShaAuLq3Gw0aAfPy5S94nwYDnvdVCVrDMDwaAWYXQmr7cFwTNxw2NlxBQQALEXkEizV2GlsJBMMm6ixPCXoFUPohfCDOtqVvhCBG7cb06ORsY3oJnsdYE6guDVsfqgvA+pAm+bno3HPzqUUEslga/qsuefneoGpKEx3pgoObea4ExMi/PPNnmuSwB12JuoaSj1BXaFz8G4sSHfsCOlJo61HvUM/TM357ORuMRr2egMZIYmxAKXGAVuJiiSQsFDa/ifG6rLySvRv1oF27ookmERaUrVwYPwwy74U6KaXxYfiXX4UFdG4YAA+eDXtNjS1YCpW6KOwzufI1TWzd4mrik+DlffibEWjReIJq/aI0jM+KufILGHcPYLPpdEyDN5H5ABLX5qbk9m9CuvwmpEwNv70N7kvXS+UdsBXfiFYUBS3iM0bW45jXGxuT2x7O1ZZK38sCrJakewjNfo4aX45Eg82XvLiqBSK/Hgc0r9di3t8UAq0z2dp6hFVeHhYgqJ5Ujia8rfT5WGqOo+tPKUX89wegZFl0eMxcATF6Tljgm2ToiBLyUvASpqTpiZYDGKQncAj1+5ngqFyvC5JJmDmaQmYpl2VSF5jkkNBWhyHgR4Tk3vNM53ihy7EE9XdDrjofy5H9yQclyfY8M9qSdktYwfZYmHcvhxlHPkBzNteuMRcElA9F160wEJIZY6CodEW8xCR3AFj/1ph4ASYBf9XSas2a9xpKAKwk/ACLJ6JD0m3wV/yJVA6S2YQQS8EzIjHjdAy0GEArvKRFCwaNObqiKjHNsevFuFeHncEagLTE+Ld0yTVE+H3Focjq9djA2IBFygWIHcbfWzAOPk6gBd+zgqCVAisGsOInDKyIuVmARTt8MC7/J3hf8HR+qb1Cg5JWOHTqGl2Ka5Upr6TXHuWik4zrSyHpzAsvaRBt6Tpeti1nwJy3CEtOS1g6VBfQkcKT2zPrhddYtaGzENU5XEoBLW+C1IBAh7mTDxZMPqvmKDLMp1NthO0G40NJuL5yI9RSPOxPFJrkkK7ei/YWlY4mZ5aNncn/tyDjeBTaCBKlSbfUiZCIO/0NlcmW0NTBYgGJd7KkdAtzfwB/DcfVFgW/Ypv08rDASxMJqs4zyjDuDp4/om84G/X6ICpRFwasJjWKBHYXn8HneyFtPIWJEXroKJl65XpQ/kyvx0ArnKRFIIU2DuDyXUhNP0Gb10CN3gjJciMGwfmw6X0bccm/gt8H4gCmOIvcAHXubzFCvu8oj44L3S+4eBuBFr7nBa1jYMVOKFgRX7MAy79hePfgYPKTNKnKnUjawqRYCF+ZD/+p0fbKXPSlq1qxMsPWGi5Rp9FqMcf09mY+gZJOgdgL59VwiehglR5zdLEr8wklvA2lLJ5UHoZRC655y8ZvCoPrBwsGOsYyyzo44R2GntgzrVMyM01+ponI4YwLVxLyKmDHJnnxFtMAhFH9f6JRmXV8YoS110GtWOmD4WQ5xS+kjsuOqfm48DrCgAXV1ldnpLeMaByJtS/DK0z+Es+Gkq7wiOV57KstYy/20/Mkvbua+2HIHSvDqIEkUcGFYw8evQ2vLdtka3Kjo9QmcLeHfiuWKAeBBq7FGV+MGH4PQAv0iqqH5IrPpbrfZcZGS6mNWOz2YMxfjv69ysMr2CwuPmVETfL3+insVK+ArnkZKtnkSLa5yXrXVz3u3gqve45VCuohv34qaFHbTiawIvZNmxtNE10HMRE+B1bsosqWOxFogfZqTWP/lxwqp9LHZtz6yRVv6k85v9MKD57v6xqry3JaVYKvx4ArKm0ERH06sLssTDanPdxRUwgKfH0pI3Eyb15tiCYB1OMeW4j7g7KDK+2kYsUjv5miiaAf2xzz9zOzZoC1LiplksNqlPAkv33uaLYPV7KGLQVww+4YPkGixDwQWW4g9DT39B1YAOi1bkUTSWKYNUspo+PJd2GxhFpbnOs0Ph3OnjDj+n3pQkx1Hk5VvB7ScvpWvg80zlC/HmyqfNaMqJuarI57mya2P7vPij8I7h4JU/fUWBVZZoR85YW9T6CF6BefRPk51UNaXKntiEGGhYcPNSdHDjm2dgBjYILqg7EMdkK9lSySHB7DHoyIUJ9i3LlYBcjo1tpvfm8lHHzXgMsSPmkjWPTfil1PX9IKbFoktIAm1MATL1kFvMs5NxoRhG3QSN5kCv6PyLiOBk/x7g9IFr/SygekvGQoItfCyJXV2UAIAETxwRqUQh2E/F1nTYnDJJRcj34LshW9Eh3s7nVz9mgyyDzQ1F7DRrxTwkye4Bm6Fqo9ARb8o+5fmNjWk/lM8Bmzfxt4UIRKuozaeEyLu666BOdI1qQWg4BS7isNdOT7tWbbD0zNgdV6LeoXCUOHnqXVDtLIBEh2T6VlOtrehOkMYfI0hQJAxZqG6k+vdxLWlRhrRaUrf6VVbFwKeXv90W2+S8EWdiac4Sf+EqpdbbHxShxG3ZI460rvVPzOmmS3RUewFsZYi6sSF+G3pZBSCiaigbHhYjQ/VjDjDH4k0DpotH4yKvBSPKYuAdj4PKF2o9x+XJ/BgrAcUtYbD0figzjcWYeBtxT23/+EpEUuaedjZmzUTP0I8l4MKfiHGFa94M2fA5j+xePGNuQ/C028F9urT4DqebDVvhW2Q+5q/EbbdTfGlXZlAmplywkysOdiW07AoiBsylnx3cFIzViU8/dhN+tcOJ3VgEFlAS5SOaJKNGBb/09RqTRgkQsB7IRrEPkrV11z3qNBA89VuDQcS3fiOJBSW9cVG7THnkhBmxDZqg0f0WFXUS2lAhbRpXoROE1NmCDjON7xA/ySczrAHrItjAEx9TA3bDe5SBPauyArTC9sSuE+VxUb5bq8bX6Ol56Sv5nONQBauET0HM77uDWAzZrs1MWMoeXc2QvPPgBWzqamH6BfuVKmlUieh5MW68I4idJxIDjdPqol1IMBoaXR0aWQLy7EWaiiiZiF8YzNAZ6cG428o5/Bm0Op+TA+r4M94nz4kTUWU42pfy3GXq6xkk8WLXAGGRY5XZOg5W8GXALgFyRdgZ/fcaS4C+Ir7AH8dugR1wG4DCw0D4wyZ5OUzIzBpQbBCK6AkRxmWLYLUtQmy+KDPMLGY1x8HGD8CvDAcoT6655EzdPLYsknXakuxsR5K/Pgq6bYjTAbbGxJbocv8cmTcgIWVQ/qcFLZ7Ef9+ro9hi4ugdX51TgcugHMmUdMIymIVs4QYyNna4mC5PyszB8XxbX545IvDesJNjnosCGnslSS19V1zrUsthJMD52oPUpmi/Yus1fD3hbPZzzPRxyrM/ElCX20EzBCh2QJO+swwZdgknW5iZG0r9A0Gjrf4Xpw0Qpnx8NuuH42bDBnhpGKyFEV9skH5cTQI9PKxQ0YZNuJD2ETgQYiknY3sYEs/zd6niTePtn2MlZ09HFhmlQmF1qcS/kOOqhUrPwU8MqjOH50WxPbPhrkF9z4E0OqpjC8oBrhLwrp5ZrJHRUD6tVcHPBqoCNFxcCKxh7mgQdJ/t/nTDlwH9SnHFcnHtlpTDibIPhAIlQ4ZsaEo7HfNlsdT43MWbvLdvQkFn84h+LEAiSvcVvtqmsyDW/EO0rnNNEWDcAMCDJcp173jKQtaX7BdiU1ep+oJ5asjFk9nicXo9kAca4JgJYOyS6piRsJkU+mVHBwoP6A2s7fHnFP6bCisYcBMq8QSpyGUKwrwYgl6NZmqFKxmQCXP4SVWpzJjDEbR3I0NrfYipz5DB3JcSOyO5Ox3oTbirgKRVf2gA4NPoCSI3V3R6Z4gcEMO5jAb35tg+wFrzRwMJAHMUj+AyvbY+AgnHERkUhodTEpFttC68WLY+nkS87kTrg9zNTwdmwGyS5/StUIE52pN6NEuF0UrqMPokoNSSlvp4gMUylPSrdrS5ZuFdsO/uUsnENixXiZWtS07+ATFgu5FoJ1IwzfRZMPvEL+0rKPPpaZGdLpOST1hAUsPIvzr3w10fCLxX90DTP+yL6DsfeErdlp3y+iU85EfnXRhHe1q2kPK8/b5EG+gup/iQb3lYFYe8yyvFYsiFAV1X8DaBZF4POI840fEEdZFAtAK1S9e9Ae2LPYq8nTf07S64VR6lLkvwfz9wAm/5/B7PNRGNtfAB7isDqPEFDjijMvAC04PyAGGgXie7Gc7ZoNLR+wBuJtrwA29ZLBPRcxP/RHkv03jOSPH406SyTTVwKRl2ATfA1E/jOkkhdieY75nZ6LQI57k3mzvJu5rrUaiuMYQThljiYhOqrXHG3IqjdE2QugWkTC+mDRlELeIT4R3ZtZVUiAG2BTzrxV8DMBH1YtF1LHt6JJ+0tz2E5/5yrzIVArOIO72I7hDbyNVKmiqigNMNA+Ow9eZBYL9VQwnJG8r9n2YK+YnhpiohESdGjpNkUBUrIU03YIA+qQgDqwtR58zXv1AQIhd0gtLAYWk8B7GKhy+1K2Px3zA6UgrpVc6xVm77Q6FCtv6gPUx5ObUXDyFZ9ZnNjZMzVPOb4TWCFyCKK8sitx1Ok8T9NuINByIPkAod4EqfA0nDpbgPM3dyU89j0p+BKA6C2aYP+MhVaDWrwlKWm3E5Yrwb+I38ivDd4/rD8p2UbmaAftiHcwztinYAI4c1LV9KtOkEWSGSS6twC0WF8EoGWfHKDlTx7X41dEPP2fB6PrLzo8D2ev8iQ6lV6f3LGrHka4RqfzOyopb3KkuxFHAp6e7MQ8T+a9nSVwktNiwdk8hQy6DjjJds1jT6bVgoHG1jnooEuLifSZpMjgjhVmL97wcSS4r9gFOjz04XEfPtFkwu7UDs6d23KBFVHCgC+IxhcCOyGzd1GdiiXkQLUZwoYVTlQv8KMfPmZfnRpNI3jSc/gKOBWGlm6pdpA8PaGzLL+1gB5d3QjrJjtRsZZQ/SEpkhsIVbVg8tVQoX7e5Ir/yc74DgwdCkdUuUSVoz9g8LOI3vmZBVbHQ5UozQcrpX0Uqtn7IH3WAHPO05m8AWd953rS2wS71K9gBoCwwBqwOP56gbv914dtdg8W6hGcI2uABDoXrhYHG534S/2O9hJ2+voAWFjdBMxa2CTQtKOqWYyB6aOBdjQVuAPQQr+8BRPhekhap1WiraXS9CUsIPjpiCZ1PrriUm/cfGnQXP9L7FQ9PM9u2oFdM5LYc6Ym1jXa45yzNRYdtkMspFk0CNHh85M21mKgIUg4fwWM0ln5Cn0hcAOjn8aEOPbQqH41xOZXhjHcBrT9HUIlKNpAuq2D8b4mxKtZW0p9fPVRsG81Jbr3B7RncuU6f4p77L1hnj3W8Py5feOwkl9pcjqfypcL6ym22MjeURBP04+TQwDAaNBNOFkRMtIZ6MOYsVuZzn7QLfpCk7DtwILQLZJi0/SQLs8Bb404JnNWFWb7hajR+KA/2H0QnJJ/F2PrjmYEZ8Rv4ZhVQiX64+vPgDvCzaB9DgYj2pTiDMDpfOwK3AF3h00yKf8maaproUV8EMecr+2LtkMak6vgjlQLlRqO32oZ3BouGYxOfHsBrIMAtz/F7sLXQQsb4Ti3yN075TDrRZ4zscubt3Yp0MIhEsbeZrheK0Drn6AePpj3gePwAxhCUQLw2h+lNOi8y6BmLESAr9Mt7r33cLT/xUG1/nn01TYYI3uiRmzIMYQ97iU1w9bqhOa1au7Qm8Gos0ux81C7aCDAkNgVtHGo4cw5bGKiJKdFoqEr3hPQ6Iu2/RlOpl8DYzu1K3RK1UWmdyvpQcTjOiWqZOi39hINTCZbuPLXoQvOk1FIuR1iOjk3lLoOTKNIki/6ZjtC/H4X9PJOMCh3G3wPnmkUct+glc5RfO9CtiNvlAJ6J10/W7cTi9Oq3FRKu0vSDVSVr93COqYtCNtgjmpCmAnfs6oEstRvmYmep4UwkHDRp3BRYjtx60Hb035W446/WJsRjTbz2dl+7o//EcDKuRmdDrBSWWPYl/SVQoBNfgMsVLDcss0ALaj67AP4WwhbYU2Ce7fCXvpNR/I5MWXcDYnqrdRPE0o9wuzkjYirImVEq4Nbw5UAXWwK5j46ltkOmkeQzmFe5BsAWl880aCl72EXRGpUn386n5gCuceAEY6M4YvRcW0IGfN6gNWIjdAxE641IhyZQINxtteuj7qiwWUCkQtxyCSzlUU+0yDBQEAIDOaHNKHscnwEoWn1BXlnVA6aJMZiRX3DYKztEPNEK2xpV6AeK/zOzZE/1y2qCzqPTldk7TQaCoZ7nMPOFRYmFx2SGFFuv+44L+f6vZR7mCy7HIoAyhjiBs4uUfuAfV9dwnZk2fkyqYJnWLT4ulKkSZrQmBxdoJ+X3fhN9TO+Hbx5HT5mFlnyZx944auibPH9jTmAdz2CJQ6qtqMwEZSaRvAAVGvE9oCKixGVwKI9hHF4APXugh3uefTsM67j9tksedhoaI6wod2lllE0f0qyyg1WwcM+owFa2NubBC21GTHU4NWjfRB5YHLiPc1W907yJ0OsNAsGTrxLATMah1bnsSgcoju8IdEGrRAKI0xxYXuE8p0soKU31B2O2Uk2J7D5UOWCEQhAqFHKIxvJYhpvEC1pBcOuKBAXxnHsxvjDg54pJdFgh7i737Xs54PnFI+sgddfNMwOT/AM5YW6c4EmRRsqNwfiMAFeyUMWdRmLMm9XQJeusM5sgCwdOtFKhsG+4xa2K21PC/3wlIxjyYY+0xw+iLa1liq5ZpKinSyI/M8dtZ07GwsgxnD96XPxUvFTgjGQSSPfZ2Ky1LLdQHLlRaSEjllild+hKA/TjMONoSN9EiGzPPp9gKmdsGuG2oSgZ8FfIJTajlH8Q6ncvWjQOPoRnjXKUtydkLYaRVDkozwan8d059xaFXm9SozegUd/k1n2bD+n1cAcktVU2gFoZUpaFkArxvgHMfb/ts9cH4fRfSlQaQFCl9+Pe80IF/Qnh6Pe1zy2jtxlLqZ+LnXOUv4s0DKhHuL1b1PrV+nv+pidqIkwI6fhlioZgBdVBGAFoQhIjkS/0d9MEq2W2Am8r4V1p6NlSuatprjspVBN1Y+kO/zhCzqn5ET2HYDCwdHkvN7Mh6Guri9lApOEBWlv+8aZVSOzaLaU/S7Zz9ow+WYOWAQo4CWi7qhbVufYrcws0JoYXYKwwXCUDJ+gsjBEh8i7QxhQguLRidfOkFrle2oH90u5pqQrtuWI7d7dVGCAeBpsf9jyD0sbCzLeVMbXoi1vhz/5U3BMehmumYO0IAMd5/KoWITPOJOYWBuT2kIEgmzCweKbw9IPk68UsAroTQcttTlhUmwu8QGAE0LqsDjiXP1ojHtfxsGbeJQbPzSUdhkEDoQCURBOZpZovqVBi50Y9VCf68VqLe7AvSA1xAs1ZaYAlUnTVyWUGkbsrTtQYpp3mhKNMxDnfdDMBNXMssJ8Tqk2aieBRJCfXlQApXUVXCaCW0WvlBOqxEtFM4bLgMPRogM03xgu+/RcdM4Mqv2ThpX82fRfs+9wLbYWDpd+SOrsX3J/o7YC5BOgvzN3jmN3643YrnHPGcGKXz+T8ZPqAQRgFvzmVrZj8Bjl6Z8inv1wkpukSteGKYvyQA1uwOVPoBPS2dMxjEiHABLSHM7g0WvqWA3sZvSqOqrKwaQj9k0veWZ3ZgJWQUmZoOXhOAqHTcsFaMEd5oMGthNd5u6kt3ZT/oFI2zCEydaZSFZBecGVeJYGrRNg09Idza2Hy3nRFx8EFZ7tlQaDReeTJowXMmlhTYM0nhqemfcr/ZlKhCpHkkJ6jAvTW4jvi8JKWEQDdjBEDHXzbvEjS0kJujfOeqWrVNKzVB/U3XGY+Eoj25N1KDwXIeF57Th0neunnPcmpdJew+YHcmbIuHkg8cJgndm2H8+U9DamgAQBL3j7OF6QcV9wL9+1wY7uGIzIh+E1+aawLwImDoNfOlRDhDRSiNc4mfAD/Rb8pcYJ717GXjoaZJnNlQzsBgzsKGCagT0s3QC04KvwCYCWIkO8hdfAQJL6IHas39NvtidgwWmGxIU3NpG9tzyJeHKiQEvY0mvAYKL+qHiCsR62K/kbzeLYtu3IOrKG9YuMn7NOpJqVknxtnmfbYjTmnQJg9V9UEIYWlYgzaCMapIkw+cPkoWB+sNEBt0pPNMkhETyq2960A865qHmCIYQODcNwiaANfNvdyLrGij2xhiJG47wdgVypiZ6AKwFMMewrqwq8tzCgS2PKFeJmTM5RkpzDptQETJk/CASCP5rgAVdoXKHNFNV21vOeJKvZglXQNr+utHvI2A0qyi9mFtRD5t2M+q6Hxf1jsGP+HdqA9yyWN6V4Rsb79O7ha8tbQm5qQhcGAVbuX8t4l8AKJ8ZfdDz9Yw2so2cqadgeusNKNFOfDb6TkRlSyUv4/2AY4KJWY7fS0zyR5UuEt9e2lwLiNDlgqN1/JPHiQFCX2V65O2c31BG8dai0vqHcsA8mscv4FfKTK1YP2lGCGrHGX62LZZ78nXg7qbIG87nwkyQtziCl1Fr+MLfFQ2Efb0mO/w5RRm8ja2hpnCtcgk9LY7NW+VNgxWYlWU2taQBa2BX8RAq0+GZsJN2Cve+FkBwbw3XSVKrFv08DLXNDxUELLj/eQtrhqlSi1Rixo2nFfwJHBT6wwH0p29FzsuAkF1sgURwNr5hk15jACqtID4w/nwEjMb6KdxOBAewTQ1GH782khh1Q+CSFTwT4cLTtmpQmwj9YIGcTe/oweLGPJl4piXgNieSBFuvoo2Geq4nL+QDb5WRED5uIN+BzUYN7QA8OP9t8STa4EeJKZQB4E1jDv7yAZQc6LPQ4HdofS/Jb4WP0HwR4pfRjPrpEg1R+aTuh25yLViXAKihnOmipzXAWvRnjZ0ZSekC32DULtFKG+IqCloCxuxur8U4a6OWUtKiTiSakjzFoz9+AM9v7W9zOJ3Af4D89LbGie2GyuYcksVITlYMJcQDP/5N0BR3GnR+Ghg8Giu3rZFszjuSQ8CBbS5nAVBbO+M5qME+tL9oALw1ekipFPMfCMIaQIVC58x+wziwLW6zL4aFYFxauqAyavK5tZ0mlmTSnfjaUQeotoqGET5PAe98Ca/Tx8E+lcq5g2w/ZQt4AXnwNY9r2Je9SiWTk9/kKlT9ixHdm3C7pYyXBKqjIMdDin0D8pj8n9RA8uNk4nqCVMsRXDLTEqD3xy6QlL8aKtBEN76bOJdAgNaeUAUZMI6ghozqFtcDaNgaad3meeou0rI8scDrggJcbrOhZisHl2Mnr8SLMLTX0NN0skqgsqitUyV8jBtDbd9vbfsa5uyZOZ6bwG7Wh0B+91hwTteMs0gwn01jtGTC8ilb6WujZ4LcA5HGC/tmARrmuaNcLRD8oq9iV+Aag/V5nsjP0JMeB/NPRXzh+Ea4cqg9WnNG5EWNH2HYmnSG8jYkfof4q1gb6nfKhQ46iLZ/iGQecw5ZH+VqSXbuVZX8MqP8edPJTqbGS8mIvhQ6NaYwn7BHK/S8mXsxyfQlL54B5Wqvw2PdhrjgX9rUsD/awNMLmI1sVfI+WY/yvamTb+zxLu8FV/BMEWqVK62HLpHy04AEcyaZ1quF5d+AdA+eX8nzYvPpKinsFoBq0W78Ez5ofxAz+GqzQl+Ae3ulH8ddTEg9ViGxMdKVEgEJ/AbSQRAKEH8P5wC4Mzoega/4X9la37mSdI5mAQM/mSwvZ7n29rP19mpKfgmPcXwA8DTAhy8pJtaFBTU6jKH879PR/H7O973ezHX0XAhD7Oad46odotSmWKA9C5WSdrxu2Ey14rbeFSXkozLk0qg8OaOGUih5a4ihWr+B37P48i02KUG2hwZiASg1Xg5uJDwGNoleuFiFKQ6gyiFbKfMA74xPbQtvrlrD9QwOsbQvGyhlZOy15KkeLJhau7zXbnTOyfQVkKUihslffc4DFf1dreBfj3Xxvx29/jMlbT8Cbb0zTYkdjm8YeGDkO14cOnFz7Vkl8nawEHaIfYP2fhn2pFbsPqckUVLDMV6oz8Q7vS7x9PDl+U6O/QdAx1mm33toYgZcj55/ELURDqVwiniHiymJEL71JsbNfh7eHlWUzLagxtTGd0IH8EFsUq2W1CFqnN2sRvg7Y2YoGrgIfWpCRXlIAny3aVuQ27o0hbg4N3H0warwslLs96Wq7dJZINLBd4yAefuJM1gJ1EIfY2nmGJs5BELGL4G54KoCSPNgR4opZGPQDgKpO8OW3wnZ/ZzN9INPGcYitbpqHaJFFrc0oj869TLCaQw3s+fTW/0F2ZtxkR1egDBrPoRK5UGLHbBfam5bUQj1YJBO9Yj3CapYXyeb/jAPfaItpL2Bb96AeocckxYOfy2RdGH5RQVTOGNMSC1nnHvoeNh1mq5bCplRLW4bFUqpfHPRLcZeMYrSC34mXgsVqdUNbrrPIaVgG6YW/KxC0cD4WPfjdEZhwBFBFBGvFDsPLlV5C0QUJbZvrUtSJIZwdC6dmB2XSFS/VeDU06AfRIdHQAyqTQMjPNJEJrCDB3a5ZiY9P5V0na50D0LoGC/QnMZcqClpUFwg67gSXVzUnt/9HyCaEyka0cyYwV3Sz1UY94koZLKEnWESH6Rz+ddgs9RMik+MwJd7Y4VnMdk9htv0o2+9cOAOQylUBekHFMBuPWygfXsiI66frHnMRjNN1TebZQJgkpEMa/1njAF/ytilXOcic9TzlKZUGPZOLDt2fbSq1LqXWo1T6QXsqXU6p9IN6FbuivRBGl0SG8P76JAN8ITDU1DEdx5hGtFk3yZLOQnaQjrOUvPAG9egz2z4PlfIjYf3CgudKuaJ+BcEqoJUJWgBQWDEql8jcAiewnyIy6lvLWQq1tZqqHKhyoEIcgPPmr/CigtfCbFCREsKCVVB4JmhVUtJK2SHVjiar+Y8QoioZlD/ba0V16tlWrvp8lQO/7xxA0PSGykBVSpUopAbm4t06+OYN2t6tcHT+BCZ/xQzxk9LbnGE2TCaksqUqYJWNlVVCVQ5M5wCM9WTLLXsqVbLKrACBlrT5LSnQEhUBrVSbVaKeDYYxW2ZWr+DnKmAVZE/1xyoHZscBGPc7aEeynGk2YBXUgzaqUqClKiJppVwoxMuIIlU2dZDqXgWsoAer1yoHKsABnL+4Fy44fqiHcpAvB1gF9TgGWuVXD8n1CE5Q96C+ZdWIq4AV9F71WuVABTjQZI0/hi3GRwJ/xtkUUU6wCupRCdAiuxp2RbuYlbw7KKdc1ypglYuTVTpVDuTgAHnq4zTBdfCPOkgTeaapEmAV1KWcoDXpkDsGB9WPLmC7+4MyynWtAla5OFmlU+VAHg60OB3PwX3wauhGfbTdX2qqJFgFdckGrZkZ4idtdROOVB8atrxfot5lVQeprlXACnqseq1yoEIcwMR1H/J2/Mr15Dth1zlUiqQVgBWOaH1x1EpcO9WDvZxVJtDqs/lmxCC7FsBQ0u7hJFiN20pe3eRs/84a1l3W3cGgnVXACjhRvVY5UEEOXAYAeMTtfBzBAC4HaIVSD2lyUogcAqsRK/lxOvdbwSr6pNsRBLHXEl+F3e1a7PQBtAgyC6dJqZHA6v/g/OePCaALPzHzX6uANXPeVZ+scqAkDgSghTiy78KD3RQFIrX9n02GIMIEUAAsJA6zf/Z4gVVQCwKtfoAWdjc/BIAYpw2DXLBF4EGRWaD5DViKXVVpsKL65aoH3a+mKgeqHKgQB+7EOb4LzPaVEaY+ghBMb0MUBT9+G3mHk2qFeGMeQsQ8ZTPxpSbbupdXSL0q1jyKRtuss1frmvooojCcj7fyRCliC4EGxbPwQ1EjWOSEkjctdDpfwP2KSVZBXauAFXCieq1y4DhyANZovp8ticYi8eVRpp9lc/Uq3FuN8D33S089L133uXmse+J4gEChZqNOWh9rjhrGvFMRNO0MhFx6HSLajuON64/ity0JZ2gHDognUc9KnqVOV/H/A6adBqadSilwAAAAAElFTkSuQmCC" alt="SurviveX"></a>
+        <ul class="nav-links">
+            <li><a href="https://survive-x.com/collections/first-aid-kits">Shop</a></li>
+            <li><a href="https://survive-x.com/pages/training-page">Training</a></li>
+            <li><a href="/membership" style="color:var(--red)">Membership</a></li>
+        </ul>
+        <a href="#plans" class="nav-cta">Join Now</a>
+    </nav>
+
+    <!-- ═══════ HERO ═══════ -->
+    <section class="hero">
+        <div class="hero-inner">
+            <div class="hero-badge">PreparedPro Membership</div>
+            <h1>Your Kit Gets Used.<br>Your Skills Fade.<br>Stay <em>Ready.</em></h1>
+            <p class="hero-sub">Every bandage you use, every glove you grab, every Zip Stitch you apply &mdash; it doesn't replace itself. PreparedPro keeps you stocked, trained, and confident.</p>
+            <p class="hero-who">For families, outdoor enthusiasts &amp; anyone serious about preparedness</p>
+            <div class="hero-btns">
+                <a href="#plans" class="btn-red">Choose Your Plan <span aria-hidden="true">&rarr;</span></a>
+                <a href="#how-it-works" class="btn-ghost">See How It Works</a>
+            </div>
+            <div class="hero-stats">
+                <div class="hero-stat">
+                    <div class="num" data-count="200000">200<em>K+</em></div>
+                    <div class="lbl">Kits Sold</div>
+                </div>
+                <div class="hero-stat">
+                    <div class="num">Up to <em>30%</em></div>
+                    <div class="lbl">Member Savings</div>
+                </div>
+                <div class="hero-stat">
+                    <div class="num"><em>Free</em></div>
+                    <div class="lbl">Shipping Always</div>
+                </div>
+                <div class="hero-stat">
+                    <div class="num">HSA/<em>FSA</em></div>
+                    <div class="lbl">Eligible</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust Strip -->
+    <div class="trust-strip">
+        <div class="trust-strip-inner">
+            <div class="trust-strip-item">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.403 12.652a3 3 0 000-5.304 3 3 0 00-3.75-3.751 3 3 0 00-5.305 0 3 3 0 00-3.751 3.75 3 3 0 000 5.305 3 3 0 003.75 3.751 3 3 0 005.305 0 3 3 0 003.751-3.75zm-2.546-4.46a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clip-rule="evenodd"/></svg>
+                200,000+ Customers
+            </div>
+            <div class="trust-strip-item">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 1a4.5 4.5 0 00-4.5 4.5V9H5a2 2 0 00-2 2v6a2 2 0 002 2h10a2 2 0 002-2v-6a2 2 0 00-2-2h-.5V5.5A4.5 4.5 0 0010 1zm3 8V5.5a3 3 0 10-6 0V9h6z" clip-rule="evenodd"/></svg>
+                30-Day Guarantee
+            </div>
+            <div class="trust-strip-item">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path d="M1 4.75C1 3.784 1.784 3 2.75 3h14.5c.966 0 1.75.784 1.75 1.75v10.515a1.75 1.75 0 01-1.75 1.75h-1.5c-.078 0-.155-.005-.23-.015H4.48c-.075.01-.152.015-.23.015h-1.5A1.75 1.75 0 011 15.265V4.75z"/></svg>
+                HSA / FSA Eligible
+            </div>
+            <div class="trust-strip-item">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path d="M8 16.25a.75.75 0 01.75-.75h2.5a.75.75 0 010 1.5h-2.5a.75.75 0 01-.75-.75z"/><path fill-rule="evenodd" d="M4 4a3 3 0 013-3h6a3 3 0 013 3v12a3 3 0 01-3 3H7a3 3 0 01-3-3V4zm4-1.5v.75c0 .414.336.75.75.75h2.5a.75.75 0 00.75-.75V2.5H7z" clip-rule="evenodd"/></svg>
+                Cancel Anytime
+            </div>
+            <div class="trust-strip-item">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.05 3.636a1 1 0 010 1.414 7 7 0 000 9.9 1 1 0 11-1.414 1.414 9 9 0 010-12.728 1 1 0 011.414 0zm9.9 0a9 9 0 010 12.728 1 1 0 11-1.414-1.414 7 7 0 000-9.9 1 1 0 011.414-1.414zM7.879 6.464a1 1 0 010 1.414 3 3 0 000 4.243 1 1 0 01-1.414 1.414 5 5 0 010-7.07 1 1 0 011.414 0zm4.242 0a5 5 0 010 7.072 1 1 0 01-1.414-1.414 3 3 0 000-4.243 1 1 0 011.414-1.414z" clip-rule="evenodd"/></svg>
+                Designed in Virginia
+            </div>
+        </div>
+    </div>
+
+    <!-- ═══════ PROBLEM ═══════ -->
+    <section class="section section-gray" id="how-it-works">
+        <div class="container">
+            <p class="section-label">The Reality</p>
+            <h2 class="section-title" style="max-width:600px">Your kit gets lighter every time you use it</h2>
+            <p class="section-sub">You bought a great kit. That was step one. But every scraped knee, every kitchen burn, every pair of gloves you grab &mdash; your kit gets thinner. Most people never restock until the next real emergency.</p>
+            <div class="problem-grid">
+                <div class="problem-card fade-in">
+                    <div class="problem-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path d="M5.127 3.502L5.25 3.5h9.5c.041 0 .082 0 .123.002A2.251 2.251 0 0012.75 2h-5.5a2.25 2.25 0 00-2.123 1.502zM1 10.25A2.25 2.25 0 013.25 8h13.5A2.25 2.25 0 0119 10.25v5.5A2.25 2.25 0 0116.75 18H3.25A2.25 2.25 0 011 15.75v-5.5z"/><path d="M3.25 6.5c-.04 0-.082 0-.123.002A2.25 2.25 0 015.25 5h9.5c.98 0 1.814.627 2.123 1.502a3.819 3.819 0 00-.123-.002H3.25z"/></svg>
+                    </div>
+                    <h3>Supplies Get Used Up</h3>
+                    <p>Band-aids for the kids. Gloves for the dog's wound. Burn gel for the stove splash. Gauze for the garage cut. Every use makes your kit less ready for the next one &mdash; and nobody restocks until it's too late.</p>
+                </div>
+                <div class="problem-card fade-in">
+                    <div class="problem-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm.75-13a.75.75 0 00-1.5 0v5c0 .414.336.75.75.75h4a.75.75 0 000-1.5h-3.25V5z" clip-rule="evenodd"/></svg>
+                    </div>
+                    <h3>What's Left Expires Quietly</h3>
+                    <p>The supplies you haven't used are degrading too. Adhesive weakens. Antiseptic loses potency. That Zip Stitch from 3 years ago? It may not hold when you need it most.</p>
+                </div>
+                <div class="problem-card fade-in">
+                    <div class="problem-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-5a.75.75 0 01.75.75v4.5a.75.75 0 01-1.5 0v-4.5A.75.75 0 0110 5zm0 10a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd"/></svg>
+                    </div>
+                    <h3>Skills Fade Fast</h3>
+                    <p>Could you apply a Zip Stitch right now? Control severe bleeding with a pressure bandage? Knowing how matters as much as having the supplies.</p>
+                </div>
+                <div class="problem-card fade-in">
+                    <div class="problem-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M4.5 2A1.5 1.5 0 003 3.5v13A1.5 1.5 0 004.5 18h11a1.5 1.5 0 001.5-1.5V7.621a1.5 1.5 0 00-.44-1.06l-4.12-4.122A1.5 1.5 0 0011.378 2H4.5zm2.25 8.5a.75.75 0 000 1.5h6.5a.75.75 0 000-1.5h-6.5zm0 3a.75.75 0 000 1.5h6.5a.75.75 0 000-1.5h-6.5z" clip-rule="evenodd"/></svg>
+                    </div>
+                    <h3>No Family Emergency Plan</h3>
+                    <p>Does your family know where the kit is? What to do in a house fire? Who to call after an earthquake? An emergency plan saves lives.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════ FOUR PILLARS ═══════ -->
+    <section class="section section-dark">
+        <div class="container">
+            <p class="section-label">The PreparedPro System</p>
+            <h2 class="section-title" style="color:var(--white)">Four pillars of true readiness</h2>
+            <p class="section-sub">PreparedPro isn't a subscription box. It's a complete system built on the same framework that trains first responders &mdash; adapted for everyday people.</p>
+            <div class="pillars-grid">
+                <div class="pillar fade-in">
+                    <div class="pillar-num">01 &middot; Equip</div>
+                    <h3>Stay Stocked</h3>
+                    <p>Every glove, bandage, and Zip Stitch you use gets replaced automatically. Curated monthly supply drops keep your kit full with professional-grade components &mdash; not filler.</p>
+                </div>
+                <div class="pillar fade-in">
+                    <div class="pillar-num">02 &middot; Train</div>
+                    <h3>Build Real Skills</h3>
+                    <p>Full access to our video training platform. Learn wound closure, bleeding control, CPR, and burn treatment from Chase Carter, EMT-P.</p>
+                </div>
+                <div class="pillar fade-in">
+                    <div class="pillar-num">03 &middot; Unite</div>
+                    <h3>Join the Community</h3>
+                    <p>Connect with 200,000+ people who take preparedness seriously. Share stories, stay accountable, and learn from real emergency experiences.</p>
+                </div>
+                <div class="pillar fade-in">
+                    <div class="pillar-num">04 &middot; Act</div>
+                    <h3>Be Ready to Act</h3>
+                    <p>When the moment comes &mdash; the car accident, the kitchen burn, the trail injury &mdash; you don't freeze. You don't fumble. You act.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════ PLANS ═══════ -->
+    <section class="section" id="plans">
+        <div class="container">
+            <div class="centered">
+                <p class="section-label">Choose Your Plan</p>
+                <h2 class="section-title">Three levels of readiness</h2>
+                <p class="section-sub">All plans include free shipping, HSA/FSA eligibility, and a 30-day money-back guarantee. Cancel anytime &mdash; no contracts.</p>
+            </div>
+
+            <!-- Toggle -->
+            <div class="toggle-wrap">
+                <span class="toggle-label active" data-period="monthly">Monthly</span>
+                <div class="toggle-track" id="billingToggle" role="switch" aria-checked="false" tabindex="0">
+                    <div class="toggle-knob"></div>
+                </div>
+                <span class="toggle-label" data-period="annual">Annual</span>
+                <span class="toggle-save">Save 20%</span>
+            </div>
+
+            <div class="plans-grid" id="plansGrid">
+
+                <!-- Essentials -->
+                <div class="plan fade-in">
+                    <div class="plan-head">
+                        <div class="plan-tier">Starter</div>
+                        <div class="plan-name">Essentials</div>
+                        <div class="plan-desc">For individuals who want to stay stocked.</div>
+                        <div class="plan-price">
+                            <span class="plan-amt" data-monthly="$14" data-annual="$11">$14</span>
+                            <span class="plan-per" data-monthly=".99 / month" data-annual=".99 / month">.99 / month</span>
+                        </div>
+                        <div class="plan-was" data-annual="$14.99/mo">Billed $143.88/year</div>
+                    </div>
+                    <div class="plan-body">
+                        <ul class="plan-features">
+                            <li>Quarterly supply refill box (bandages, gloves, antiseptic, essentials)</li>
+                            <li>10% discount on all SurviveX store purchases</li>
+                            <li>Access to First Aid Quick-Reference Guide (PDF)</li>
+                            <li>Monthly preparedness newsletter with seasonal tips</li>
+                            <li>Free standard shipping on every order</li>
+                            <li>HSA / FSA eligible purchases</li>
+                        </ul>
+                        <a href="#" class="plan-cta-btn">Get Started &mdash; $14.99/mo</a>
+                        <div class="plan-guarantee">30-day money-back guarantee</div>
+                    </div>
+                </div>
+
+                <!-- PreparedPro (Featured) -->
+                <div class="plan featured fade-in">
+                    <div class="plan-head">
+                        <div class="plan-tier">Most Popular</div>
+                        <div class="plan-name">PreparedPro</div>
+                        <div class="plan-desc">For prepared families who want real skills.</div>
+                        <div class="plan-price">
+                            <span class="plan-amt" data-monthly="$29" data-annual="$23">$29</span>
+                            <span class="plan-per" data-monthly=".99 / month" data-annual=".99 / month">.99 / month</span>
+                        </div>
+                        <div class="plan-was">Billed $287.88/year</div>
+                    </div>
+                    <div class="plan-body">
+                        <ul class="plan-features">
+                            <li>Monthly curated supply drop (advanced components included)</li>
+                            <li>20% discount on all SurviveX store purchases</li>
+                            <li>Full Training Platform access &mdash; all video courses with Chase Carter</li>
+                            <li>Scenario-based emergency drill guides (quarterly)</li>
+                            <li>Downloadable Family Emergency Plan templates</li>
+                            <li>Free expedited shipping on every order</li>
+                            <li>HSA / FSA eligible purchases</li>
+                            <li>Lifetime warranty on all member kit purchases</li>
+                            <li>Priority customer support</li>
+                        </ul>
+                        <a href="#" class="plan-cta-btn">Join PreparedPro &mdash; $29.99/mo</a>
+                        <div class="plan-guarantee">30-day money-back guarantee</div>
+                    </div>
+                </div>
+
+                <!-- Family Guardian -->
+                <div class="plan fade-in">
+                    <div class="plan-head">
+                        <div class="plan-tier">Family</div>
+                        <div class="plan-name">Family Guardian</div>
+                        <div class="plan-desc">For households serious about full readiness.</div>
+                        <div class="plan-price">
+                            <span class="plan-amt" data-monthly="$49" data-annual="$39">$49</span>
+                            <span class="plan-per" data-monthly=".99 / month" data-annual=".99 / month">.99 / month</span>
+                        </div>
+                        <div class="plan-was">Billed $479.88/year</div>
+                    </div>
+                    <div class="plan-body">
+                        <ul class="plan-features">
+                            <li>Everything in PreparedPro, plus:</li>
+                            <li>Covers 2 household kits (rotation &amp; restocking for both)</li>
+                            <li>30% discount on all SurviveX store purchases</li>
+                            <li>Custom printed Family Emergency Binder (shipped to you)</li>
+                            <li>Kids' First Aid Introduction module on Training Platform</li>
+                            <li>Dedicated account manager for custom kit builds</li>
+                            <li>Early access to new products before public launch</li>
+                            <li>Free overnight shipping on urgent restock orders</li>
+                        </ul>
+                        <a href="#" class="plan-cta-btn">Get Family Guardian &mdash; $49.99/mo</a>
+                        <div class="plan-guarantee">30-day money-back guarantee</div>
+                    </div>
+                </div>
+
+            </div>
+            <p class="plans-footer">
+                <strong>All plans are FSA/HSA eligible.</strong> Need kits for your team?
+                <a href="/business" style="color:var(--red);font-weight:600">Explore corporate plans &rarr;</a>
+            </p>
+        </div>
+    </section>
+
+    <!-- ═══════ VALUE COMPARISON ═══════ -->
+    <section class="section section-gray">
+        <div class="container">
+            <div class="centered">
+                <p class="section-label">The Math</p>
+                <h2 class="section-title">PreparedPro pays for itself</h2>
+                <p class="section-sub">Every time you use supplies, you pay to replace them &mdash; or you don't, and your kit gets weaker. Here's how the numbers stack up.</p>
+            </div>
+            <div class="value-grid fade-in">
+                <div class="value-col without">
+                    <h3>Without Membership</h3>
+                    <div class="value-line"><span>Replacing used supplies quarterly</span> <span class="price">$180/yr</span></div>
+                    <div class="value-line"><span>Online first aid course</span> <span class="price">$149/yr</span></div>
+                    <div class="value-line"><span>Standard shipping (4 orders)</span> <span class="price">$36/yr</span></div>
+                    <div class="value-line"><span>Large First Aid Kit (full price)</span> <span class="price">$120.99</span></div>
+                    <div class="value-line"><span>Emergency plan templates</span> <span class="price">DIY</span></div>
+                    <div class="value-total">
+                        <span class="total-label">Annual cost</span>
+                        <span class="total-num">$485<span style="font-size:18px;font-weight:400">+</span></span>
+                    </div>
+                </div>
+                <div class="value-col with">
+                    <h3>With PreparedPro (Annual)</h3>
+                    <div class="value-line included"><span>Monthly supply replenishment</span> <span class="price">Included</span></div>
+                    <div class="value-line included"><span>Full training platform</span> <span class="price">Included</span></div>
+                    <div class="value-line included"><span>Free expedited shipping</span> <span class="price">Included</span></div>
+                    <div class="value-line included"><span>20% off everything (save $24+ per kit)</span> <span class="price">Included</span></div>
+                    <div class="value-line included"><span>Emergency plans &amp; guides</span> <span class="price">Included</span></div>
+                    <div class="value-total">
+                        <span class="total-label">Annual cost</span>
+                        <span class="total-num">$287<span style="font-size:18px;font-weight:400;color:rgba(255,255,255,.5)">.88</span></span>
+                    </div>
+                </div>
+            </div>
+            <div class="value-savings fade-in">
+                You save over <span>$200/year</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════ WHAT'S IN THE BOX ═══════ -->
+    <section class="section">
+        <div class="container">
+            <div class="box-grid">
+                <div class="box-img fade-in">
+                    <img src="data:image/jpeg;base64,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"
+                        alt="SurviveX first aid supplies arranged from a PreparedPro membership supply drop"
+                        onerror="this.parentElement.style.background='#e8e8e8'" loading="lazy">
+                </div>
+                <div class="fade-in">
+                    <p class="section-label">Every Supply Drop</p>
+                    <h2 class="section-title">Curated by first aid professionals</h2>
+                    <p class="section-sub" style="margin-bottom:32px">Every box is assembled by our Virginia-based team. No filler items. No plastic tweezers. Only high-utility, professional-grade components selected by EMTs.</p>
+                    <ul class="box-list">
+                        <li>
+                            <div class="box-num">1</div>
+                            <div>
+                                <h4>Professional-Grade Supplies</h4>
+                                <p>Zip Stitches, nitrile gloves, hydrogel burn gel, antiseptic wipes, adhesive dressings &mdash; components trusted by first responders.</p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="box-num">2</div>
+                            <div>
+                                <h4>Scenario Training Card</h4>
+                                <p>Each box includes a printed emergency scenario drill &mdash; "What would you do if&hellip;" &mdash; to practice with your family.</p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="box-num">3</div>
+                            <div>
+                                <h4>Seasonal Readiness Checklist</h4>
+                                <p>Context-aware prep for the current season: wildfire, winter storm, hurricane, road trips, or everyday household emergencies.</p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="box-num">4</div>
+                            <div>
+                                <h4>Member-Only Discount Code</h4>
+                                <p>A new store discount arrives with every box. Stackable on sale items. Use it on kits, Zip Stitches, burn dressings, and more.</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════ TRUST BAR ═══════ -->
+    <div class="trust-bar">
+        <div class="trust-bar-inner">
+            <div class="trust-item"><span class="trust-icon">&#x1F3E5;</span> FDA-Cleared Devices</div>
+            <div class="trust-item"><span class="trust-icon">&#x1F4B3;</span> HSA / FSA Eligible</div>
+            <div class="trust-item"><span class="trust-icon">&#x1F504;</span> Cancel Anytime</div>
+            <div class="trust-item"><span class="trust-icon">&#x1F69A;</span> Free Shipping</div>
+            <div class="trust-item"><span class="trust-icon">&#x1F6E1;</span> 30-Day Guarantee</div>
+            <div class="trust-item"><span class="trust-icon">&#x1F1FA;&#x1F1F8;</span> Designed in Virginia</div>
+        </div>
+    </div>
+
+    <!-- ═══════ TESTIMONIALS ═══════ -->
+    <section class="section section-gray">
+        <div class="container">
+            <div class="centered">
+                <p class="section-label">Member Stories</p>
+                <h2 class="section-title">Real members. Real emergencies.</h2>
+                <p class="section-sub" style="margin-bottom:48px">Our members have used their SurviveX kits and training in real situations. Here's what they say.</p>
+            </div>
+            <div class="testi-grid">
+                <div class="testi fade-in">
+                    <div class="testi-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <blockquote>"My husband is an EMT and he loved the PreparedPro box. The Zip Stitches alone are worth the entire subscription. We've restocked our home kit three times through the membership &mdash; never had to think about it."</blockquote>
+                    <cite>Sarah M.</cite>
+                    <div class="role">PreparedPro Member &middot; Denver, CO</div>
+                </div>
+                <div class="testi fade-in">
+                    <div class="testi-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <blockquote>"I got the Family Guardian plan after our area had back-to-back wildfires. The printed emergency binder they sent was exactly what we needed &mdash; where to go, what to grab, who to call. Every family in a fire zone should have this."</blockquote>
+                    <cite>Jason T.</cite>
+                    <div class="role">Family Guardian Member &middot; Phoenix, AZ</div>
+                </div>
+                <div class="testi fade-in">
+                    <div class="testi-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <blockquote>"The training platform sealed the deal. I've watched the wound closure module three times now. Knowing I can actually use what's in the kit &mdash; that confidence is worth more than the supplies themselves."</blockquote>
+                    <cite>Rebecca L.</cite>
+                    <div class="role">PreparedPro Member &middot; Austin, TX</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════ FAQ ═══════ -->
+    <section class="section" id="faq">
+        <div class="container">
+            <div class="centered" style="margin-bottom:48px">
+                <p class="section-label">Questions &amp; Answers</p>
+                <h2 class="section-title">Frequently Asked</h2>
+            </div>
+            <div class="faq-list">
+
+                <div class="faq-item">
+                    <button class="faq-q" aria-expanded="false">
+                        Can I use my HSA or FSA to pay for the membership?
+                        <svg class="faq-chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd"/></svg>
+                    </button>
+                    <div class="faq-a"><div class="faq-a-inner">Yes. All SurviveX products are HSA/FSA eligible. You can use your health savings or flexible spending account to cover membership fees and any additional store purchases. We provide an itemized receipt for reimbursement. It's a smart way to use pre-tax health dollars &mdash; especially before funds expire at year-end.</div></div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-q" aria-expanded="false">
+                        Can I cancel my membership at any time?
+                        <svg class="faq-chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd"/></svg>
+                    </button>
+                    <div class="faq-a"><div class="faq-a-inner">Absolutely. No contracts, no commitments. Cancel, pause, or change your plan anytime from your account dashboard. No cancellation fees, ever. If you cancel within 30 days, we'll refund your first payment in full &mdash; no questions asked.</div></div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-q" aria-expanded="false">
+                        What if I already have a SurviveX first aid kit?
+                        <svg class="faq-chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd"/></svg>
+                    </button>
+                    <div class="faq-a"><div class="faq-a-inner">Even better. Your supply drops will restock and upgrade what's already in your kit. The training platform teaches you to use every component with confidence. And your member discount (10&ndash;30% off) applies to every future purchase &mdash; replacement Zip Stitches, burn dressings, a second kit for the car.</div></div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-q" aria-expanded="false">
+                        When do my supply drops ship?
+                        <svg class="faq-chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd"/></svg>
+                    </button>
+                    <div class="faq-a"><div class="faq-a-inner">Essentials members receive a quarterly box on the 1st of January, April, July, and October. PreparedPro and Family Guardian members receive a monthly box on the 1st. You'll get a tracking notification as soon as it ships. First box ships within 3 business days of signing up.</div></div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-q" aria-expanded="false">
+                        What's in a typical monthly supply drop?
+                        <svg class="faq-chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd"/></svg>
+                    </button>
+                    <div class="faq-a"><div class="faq-a-inner">Every box is curated by our Virginia-based team and varies by season and member feedback. A typical PreparedPro box includes: replacement nitrile gloves, adhesive dressings, antiseptic wipes, a Zip Stitch wound closure or burn gel packet, a scenario training card, a seasonal readiness checklist, and your member discount code. Retail value of each box: $40&ndash;60+.</div></div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-q" aria-expanded="false">
+                        Does my member discount stack on sale items?
+                        <svg class="faq-chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd"/></svg>
+                    </button>
+                    <div class="faq-a"><div class="faq-a-inner">Yes. Your member discount applies on top of existing sale prices. Family Guardian members also receive a monthly promo code in their supply box for additional savings on specific products.</div></div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-q" aria-expanded="false">
+                        What's the 30-day money-back guarantee?
+                        <svg class="faq-chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd"/></svg>
+                    </button>
+                    <div class="faq-a"><div class="faq-a-inner">Try any PreparedPro plan risk-free. If you're not satisfied within the first 30 days, we'll refund your payment in full &mdash; no questions asked, no hoops to jump through. Keep whatever supplies you've already received. We're that confident you'll see the value.</div></div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-q" aria-expanded="false">
+                        Is there a corporate or team membership?
+                        <svg class="faq-chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd"/></svg>
+                    </button>
+                    <div class="faq-a"><div class="faq-a-inner">Yes. For businesses, schools, churches, and organizations needing 5+ kits and group training access, we offer custom corporate packages with dedicated support and volume pricing. <a href="/business">Visit our business page</a> to request a quote.</div></div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════ FINAL CTA ═══════ -->
+    <section class="final-cta">
+        <h2>A deep cut doesn't wait<br>for you to get ready.</h2>
+        <p>Join thousands of prepared Americans who never have to scramble when something goes wrong.</p>
+        <div class="final-btns">
+            <a href="#plans" class="btn-white">Choose Your Plan</a>
+            <a href="https://survive-x.com/collections/first-aid-kits" class="btn-ghost-white">Browse the Store</a>
+        </div>
+        <div class="final-guarantee">30-Day Money-Back Guarantee &middot; Cancel Anytime &middot; Free Shipping &middot; FSA/HSA Eligible</div>
+    </section>
+
+    <!-- ═══════ FOOTER ═══════ -->
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="footer-brand">
+                <div class="logo"><img src="data:image/png;base64,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" alt="SurviveX"></div>
+                <p>Prepared. Organized. Life-saving.<br>The confidence to act when it matters most.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Shop</h4>
+                <ul>
+                    <li><a href="https://survive-x.com/collections/first-aid-kits">First Aid Kits</a></li>
+                    <li><a href="https://survive-x.com/collections/wounds">Wound Care</a></li>
+                    <li><a href="https://survive-x.com/collections/burns">Burn Care</a></li>
+                    <li><a href="https://survive-x.com/collections/supplies">Supplies</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Membership</h4>
+                <ul>
+                    <li><a href="#plans">All Plans</a></li>
+                    <li><a href="#plans">Essentials</a></li>
+                    <li><a href="#plans">PreparedPro</a></li>
+                    <li><a href="#plans">Family Guardian</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="https://survive-x.com/pages/first-aid-guide">First Aid Guide</a></li>
+                    <li><a href="https://survive-x.com/pages/training-page">Training</a></li>
+                    <li><a href="https://survive-x.com/policies/shipping-policy">Shipping</a></li>
+                    <li><a href="https://survive-x.com/policies/refund-policy">Returns</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <span>&copy; 2026 SurviveX. All rights reserved.</span>
+            <span>FREE SHIPPING &middot; FREE RETURNS &middot; 30-DAY GUARANTEE</span>
+        </div>
+    </footer>
+
+    <!-- Sticky Mobile CTA -->
+    <div class="sticky-cta">
+        <div class="sticky-cta-text">
+            PreparedPro
+            <span>From $14.99/mo &middot; Cancel anytime</span>
+        </div>
+        <a href="#plans" class="sticky-cta-btn">Join Now</a>
+    </div>
+
+    <!-- ═══════ FAQ Schema ═══════ -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            { "@type": "Question", "name": "Can I use my HSA or FSA to pay for the membership?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. All SurviveX products are HSA/FSA eligible. You can use your health savings or flexible spending account to cover membership fees and any additional store purchases." }},
+            { "@type": "Question", "name": "Can I cancel my membership at any time?", "acceptedAnswer": { "@type": "Answer", "text": "Absolutely. No contracts, no commitments. Cancel, pause, or change your plan anytime from your account dashboard. No cancellation fees, ever." }},
+            { "@type": "Question", "name": "What's in a typical monthly supply drop?", "acceptedAnswer": { "@type": "Answer", "text": "Every box includes replacement nitrile gloves, adhesive dressings, antiseptic wipes, a Zip Stitch or burn gel packet, a scenario training card, a seasonal readiness checklist, and a member discount code. Retail value: $40-60+." }},
+            { "@type": "Question", "name": "What's the 30-day money-back guarantee?", "acceptedAnswer": { "@type": "Answer", "text": "Try any PreparedPro plan risk-free. If you're not satisfied within the first 30 days, we'll refund your payment in full. Keep whatever supplies you've already received." }}
+        ]
+    }
+    </script>
+
+    <script>
+        /* ── Pricing Toggle ──────────────────────────────── */
+        const toggle = document.getElementById('billingToggle');
+        const grid = document.getElementById('plansGrid');
+        const labels = document.querySelectorAll('.toggle-label');
+        let isAnnual = false;
+
+        function updatePricing() {
+            const period = isAnnual ? 'annual' : 'monthly';
+            toggle.classList.toggle('annual', isAnnual);
+            toggle.setAttribute('aria-checked', isAnnual);
+            grid.classList.toggle('plans-annual', isAnnual);
+
+            labels.forEach(l => {
+                l.classList.toggle('active', l.dataset.period === period);
+            });
+
+            document.querySelectorAll('.plan-amt').forEach(el => {
+                el.textContent = el.dataset[period];
+            });
+            document.querySelectorAll('.plan-per').forEach(el => {
+                el.textContent = el.dataset[period];
+            });
+
+            // Update CTA button text
+            const ctaTexts = isAnnual
+                ? ['Get Started — $11.99/mo', 'Join PreparedPro — $23.99/mo', 'Get Family Guardian — $39.99/mo']
+                : ['Get Started — $14.99/mo', 'Join PreparedPro — $29.99/mo', 'Get Family Guardian — $49.99/mo'];
+            document.querySelectorAll('.plan-cta-btn').forEach((btn, i) => {
+                btn.textContent = ctaTexts[i];
+            });
+        }
+
+        toggle.addEventListener('click', () => { isAnnual = !isAnnual; updatePricing(); });
+        toggle.addEventListener('keydown', e => {
+            if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); isAnnual = !isAnnual; updatePricing(); }
+        });
+        labels.forEach(l => {
+            l.addEventListener('click', () => {
+                isAnnual = l.dataset.period === 'annual';
+                updatePricing();
+            });
+        });
+
+        /* ── FAQ Accordion ───────────────────────────────── */
+        document.querySelectorAll('.faq-q').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const item = btn.closest('.faq-item');
+                const answer = item.querySelector('.faq-a');
+                const wasOpen = item.classList.contains('open');
+
+                document.querySelectorAll('.faq-item').forEach(i => {
+                    i.classList.remove('open');
+                    i.querySelector('.faq-a').style.maxHeight = '0';
+                    i.querySelector('.faq-q').setAttribute('aria-expanded', 'false');
+                });
+
+                if (!wasOpen) {
+                    item.classList.add('open');
+                    answer.style.maxHeight = answer.scrollHeight + 'px';
+                    btn.setAttribute('aria-expanded', 'true');
+                }
+            });
+        });
+
+        /* ── Scroll Fade-In ──────────────────────────────── */
+        const fadeEls = document.querySelectorAll('.fade-in');
+        const obs = new IntersectionObserver((entries) => {
+            entries.forEach((e, i) => {
+                if (e.isIntersecting) {
+                    // Stagger siblings
+                    const siblings = Array.from(e.target.parentElement.querySelectorAll('.fade-in'));
+                    const idx = siblings.indexOf(e.target);
+                    setTimeout(() => {
+                        e.target.classList.add('visible');
+                    }, idx * 100);
+                    obs.unobserve(e.target);
+                }
+            });
+        }, { threshold: 0.1 });
+        fadeEls.forEach(el => obs.observe(el));
+
+        /* ── Sticky CTA visibility ───────────────────────── */
+        const stickyCta = document.querySelector('.sticky-cta');
+        const heroSection = document.querySelector('.hero');
+        const stickyObs = new IntersectionObserver(entries => {
+            entries.forEach(e => {
+                if (stickyCta) {
+                    stickyCta.style.transform = e.isIntersecting ? 'translateY(100%)' : 'translateY(0)';
+                    stickyCta.style.transition = 'transform .3s ease';
+                }
+            });
+        });
+        stickyObs.observe(heroSection);
+    </script>
+
+</body>
+</html>
