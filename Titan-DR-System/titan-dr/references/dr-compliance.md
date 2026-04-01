@@ -28,7 +28,7 @@ These trigger Meta's automated systems. Ad rejected in minutes. Repeated violati
 
 | Trigger | Why It Kills |
 |---------|-------------|
-| "Saves lives" (as a direct product claim) | Medical outcome claim — instant flag |
+| "Saves lives" (as a direct product claim) | Medical outcome claim — instant flag | (please note that "life-saving" is allowed it is a part of our branding tagline "SurviveX Life-Saving Preparedness")
 | Before/After injury photos (graphic wounds) | Shocking content / medical imagery violation |
 | "YOU + Negative Attribute" | Personal Attributes Policy violation |
 | "Cures" / "Treats" / "Heals" (as product claims) | Medical treatment claim — instant flag |
